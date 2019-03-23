@@ -2,25 +2,37 @@
 <html>
     <head>
         <link rel="stylesheet" href="css/main.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Main page</title>
     </head>
     <body>
         //= template/header.html
         <div class="main">
             <div class="slider__wrapper">                
                 <div class="slider__container">
-                    <div class="slider__item">
-                        <img src="" alt="slideImage">
+                    <div class="slider__item fade js-item">
+                        <img src="img/slide1.jpeg" class="slider__image" alt="slideImage">
                     </div>
-                    <div class="slider__item">
-                        <img src="" alt="slideImage">
+                    <div class="slider__item fade js-item">
+                        <img src="img/slide2.jpeg" class="slider__image" alt="slideImage">
                     </div>
-                    <div class="slider__item">
-                        <img src="" alt="slideImage">
+                    <div class="slider__item fade js-item">
+                        <img src="img/slide3.jpeg" class="slider__image" alt="slideImage">
                     </div>
-                    <div class="slider__button--prev"></div>
-                    <div class="slider__button--next"></div>
+                    <div class="slider__button--prev js-prev">
+                        <img src="img/arrow.png" class="slider__button-icon" alt="arrow">
+                    </div>
+                    <div class="slider__button--next js-next">
+                        <img src="img/arrow.png" class="slider__button-icon" alt="arrow">
+                    </div>
                 </div>
-                
+                <div class="slider__dots">
+                    <span class="slider__dots-item js-dots"></span>
+                    <span class="slider__dots-item js-dots"></span>
+                    <span class="slider__dots-item js-dots"></span>
+                </div>
             </div>
         </div>
         //= template/footer.html

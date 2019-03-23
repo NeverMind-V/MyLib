@@ -1,0 +1,81 @@
+.slider {
+    &__wrapper {
+        padding: 0 50px;
+    }
+    &__container {
+        position: relative;
+        max-width: 700px; 
+        margin:auto;       
+    }
+    &__image {
+        display:block;
+        max-width: 100%;
+        height:auto;
+    }
+    &__button {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        position:absolute;
+        top:50%;
+        transform:translate(0,-50%);
+        width:30px;
+        height:100px;
+        background:rgba($green,0.3);
+        transition:$main_animation;
+        cursor: pointer;
+        &:hover {
+            background:rgba($green,1);
+        }
+        &--prev {
+            @extend .slider__button;
+            left:-50px;
+            .slider__button-icon {
+                transform:scale(-1);
+            }
+        }
+        &--next {
+            @extend .slider__button;
+            right:-50px;
+        }
+        &-icon {
+            display: block;
+            max-width: 100%;
+            height:auto;
+        }
+    }
+    &__dots {
+        display: flex;
+        justify-content:center;
+        margin-top:10px;
+        &-item {
+            width: 15px;
+            height:15px;
+            border-radius: 50%;
+            border:1px solid $green;
+            background:$white;
+            transition:$main_animation;
+            cursor:pointer;
+            &:not(:last-child) {
+                margin-right:10px;
+            }
+            &:hover,&.active {
+                background:$green;
+            }
+        }
+    }
+}
+
+.fade {
+    animation-name:fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity:0.4;
+    }
+    to {
+        opacity:1;
+    }
+}
