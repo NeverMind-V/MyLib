@@ -2,6 +2,9 @@
 // global libs
 
 function sliderInit() {    
+    if(!document.querySelector('.js-slider')) {
+        return;
+    }
     let items = document.getElementsByClassName('js-item');
     let prev = document.getElementsByClassName('js-prev')[0];
     let next = document.getElementsByClassName('js-next')[0];

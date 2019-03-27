@@ -51,16 +51,18 @@ body {
             @include font-size(16px);
             color:$white;
             font-weight:500;
+            &:hover {
+                color:rgba($white,0.7);
+            }
         }
     }
     &__sublist {
         display:flex;
         flex-direction: column;
         position:absolute;
-        z-index:5;
         top: calc(100% + 1px);
         left:0;
-        width:200px;        
+        width:200px;       
         list-style-type: none;        
         transition:$main_animation;
         &-item {
@@ -73,7 +75,6 @@ body {
         &-link {
             @include font-size(16px);
             color: $white;
-
         }
     }
     &__logo {
