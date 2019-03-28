@@ -29,17 +29,20 @@ body {
                 margin-right:15px;
             }
             &:hover {
+                .header__sublist {
+                    display:flex;
+                }
                 .header__sublist-item {
-                    padding:5px 10px;
-                    opacity:1;
+                    display:block;
+                    animation: dropdown 0.3s ease-in-out forwards;
                     &:nth-child(1) {
-                        transition-delay: 0s;
+                        animation-delay: 0s;
                     }
                     &:nth-child(2) {
-                        transition-delay: 0.15s;
+                        animation-delay: 0.1s;
                     }
                     &:nth-child(3) {
-                        transition-delay: 0.3s;
+                        animation-delay: 0.2s;
                     }
                 }
             }
@@ -57,9 +60,10 @@ body {
         }
     }
     &__sublist {
-        display:flex;
+        display:none;
         flex-direction: column;
         position:absolute;
+        z-index:5;
         top: calc(100% + 1px);
         left:0;
         width:200px;       
