@@ -10,7 +10,6 @@ function getRequest(url) {
             return;
         }
         return res.json().then(function(data) {
-            console.log(data);
             dataHandle(data);
         });
     })
@@ -29,23 +28,47 @@ function dataHandle(data) {
         }
         return 0;
     };
+    let sameArray = [];
+    let fullArray = [];
     let storage = document.querySelector('.js-storage');
-    
-    let link = `
-    <a href="#" class="main__link"><i class="js-type"></i>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, ducimus?</a>
-    `;
-    let arr = data.sort(nameSort)
-    .map((item) => {
+    let dataStorage = [...data];
+
+    dataStorage.sort(nameSort).forEach((item,i) => {        
+        if(i == 0 || item.name[0] == dataStorage[i - 1].name[0]) {
+            sameArray.push(item);            
+        } else {
+            fullArray.push(sameArray);
+            sameArray = [];
+            sameArray.push(item);
+            if( i == dataStorage.length - 1) {
+                fullArray.push(sameArray);
+            }
+        }
+        if( i == dataStorage.length - 1) {
+            fullArray.push(sameArray);
+        }  
+    });
+
+    fullArray.map((item) => {
         let block = document.createElement('div');
         block.className = 'main__letter';
-        let header = document.createElement('h3');
+        let header = document.createElement('h3');        
         header.className = 'main__header--underlined';
-        header.innerHTML = item.name[0];
+        header.innerHTML = item[0].name[0];
+        let linkBlock = document.createElement('div');
+        linkBlock.className = 'main__letter-inner';
         block.appendChild(header);
+        block.appendChild(linkBlock);
+        item.forEach(value => {
+            let link = document.createElement('a');
+            link.className = 'main__link';
+            link.href = '#';
+            link.innerHTML = `<i class="fas fa-${value.type} icon"></i>${value.name}`;
+            linkBlock.append(link);
+        });
         return block;
-    });
-    arr.sort().forEach((item) => storage.appendChild(item));
+    }).forEach((item) => storage.appendChild(item));
+    
 }
 
 function sliderInit() {    
