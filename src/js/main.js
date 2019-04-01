@@ -10,7 +10,8 @@ function getRequest(url) {
             return;
         }
         return res.json().then(function(data) {
-            dataHandle(data);
+            showAll(data);
+            showCategory(data);
         });
     })
     .catch(function(err) {
@@ -18,7 +19,9 @@ function getRequest(url) {
     });
 }
 
-function dataHandle(data) {
+function showAll(data) {
+    let storage = document.querySelector('.js-storage');
+    if(!storage) return;
     let nameSort = (a,b) => {
         if(a.name > b.name) {
             return 1;
@@ -30,7 +33,7 @@ function dataHandle(data) {
     };
     let sameArray = [];
     let fullArray = [];
-    let storage = document.querySelector('.js-storage');
+    
     let dataStorage = [...data];
 
     dataStorage.sort(nameSort).forEach((item,i) => {        
@@ -52,6 +55,7 @@ function dataHandle(data) {
     fullArray.map((item) => {
         let block = document.createElement('div');
         block.className = 'main__letter';
+        block.id = `${item.id}`;  
         let header = document.createElement('h3');        
         header.className = 'main__header--underlined';
         header.innerHTML = item[0].name[0];
@@ -69,6 +73,89 @@ function dataHandle(data) {
         return block;
     }).forEach((item) => storage.appendChild(item));
     
+}
+
+function showCategory(data) {    
+    let category = document.querySelector('.js-category');
+    if(!category) return;
+    data.forEach((item) => {
+        let block = document.createElement('a');
+        block.href = '#';  
+        block.className = 'category__item js-category-item';  
+        block.id = `${item.id}`;        
+        let image = document.createElement('img');
+        image.src = `${item.thumbnail == 0 ? `../img/${item.type}-thumb.png` : item.thumbnail}`;       
+        image.className = 'category__thumb';
+        let text = document.createElement('p');
+        text.innerHTML = `${item.name}`;
+        text.className = 'category__name';
+        block.appendChild(image);
+        block.appendChild(text);
+        category.appendChild(block);
+    });
+    pagination();    
+}
+
+function pagination() {
+    let page = 0;
+    let blockAmount = 6;
+    let items = document.querySelectorAll('.js-category-item');  
+    let pagesAmount = Math.round(items.length / 6,0) - 1;
+    let clean = () => {
+        items.forEach((item) => {
+            item.style.display = 'none';
+        });
+        for(let i = 0; i < blockAmount; i++) {
+            if( i + page * blockAmount < items.length) items[i + page * blockAmount].style.display = 'flex';
+        }
+    }
+    let paginationInit = () => {
+        let paginationItems = 6;
+        let container = document.querySelector('.js-pagination');
+        container.innerHTML = '';
+        let prev = document.createElement('li');
+        prev.className = 'pagination__item js-pagination-prev';
+        prev.innerHTML = `<a href="#" class="pagination__link--prev"></a>`;
+        let next = document.createElement('li');
+        next.innerHTML = `<a href="#" class="pagination__link--next"></a>`;
+        next.className = 'pagination__item js-pagination-next';
+        container.appendChild(prev);
+        for(let i = 0; i <= pagesAmount; i++) {
+            if(pagesAmount <= paginationItems) {
+                let item = `
+                <li class="pagination__item">
+                ${ i == page 
+                    ? `<span class="pagination__link active">${i + 1}</span>`
+                    : `<a href="#" class="pagination__link">${i + 1}</a>`
+                }
+                </li>`;
+                container.insertAdjacentHTML('beforeend',item);
+            } else {
+
+                // let item = `
+                // <li class="pagination__item">
+                // ${ i == page 
+                //     ? `<span class="pagination__link active">${i + 1}</span>`
+                //     : `<a href="#" class="pagination__link">${i + 1}</a>`
+                // }
+                // </li>`;
+            }
+        }
+        container.appendChild(next);
+        [prev,next].forEach((item) => {
+            item.addEventListener('click',function() {
+                if(this.classList.contains('js-pagination-prev')) {
+                    page = page === 0 ? 0 : page - 1;
+                } else {
+                    page = page === pagesAmount ? pagesAmount : page + 1;
+                }
+                clean();
+                paginationInit();
+            });
+        });
+    }
+    clean();   
+    paginationInit(); 
 }
 
 function sliderInit() {    
