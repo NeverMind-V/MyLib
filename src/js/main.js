@@ -78,7 +78,26 @@ function showAll(data) {
 function showCategory(data) {    
     let category = document.querySelector('.js-category');
     if(!category) return;
-    data.forEach((item) => {
+    let filterSearch = (item,i) => {
+        let input = document.querySelector('.js-input');
+        let form = document.querySelector('.js-search');
+        let query;
+        input.addEventListener('change',function(e) {
+            query = e.target.value;
+        });
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('query',query);
+        });
+        // if(item.name.toLowerCase().includes(query) || query !== '') {
+        //     return true;
+        // }
+        if(query !== '') {
+            console.log(item);
+            return true;
+        }
+    };   
+    data.filter(filterSearch).forEach((item) => {
         let block = document.createElement('a');
         block.href = '#';  
         block.className = 'category__item js-category-item';  
@@ -98,7 +117,7 @@ function showCategory(data) {
 
 function pagination() {
     let page = 1;
-    let blockAmount = 9;
+    let blockAmount = 6;
     let items = document.querySelectorAll('.js-category-item');  
     let container = document.querySelector('.js-pagination');
     let pagesAmount = Math.ceil(items.length / blockAmount,0);
@@ -121,7 +140,7 @@ function pagination() {
     let paginationInit = (c, m) => {
         let current = c,
             last = m,
-            delta = 2,
+            delta = 1,
             left = current - delta,
             right = current + delta + 1,
             range = [],
