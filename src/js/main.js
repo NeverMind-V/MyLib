@@ -97,67 +97,92 @@ function showCategory(data) {
 }
 
 function pagination() {
-    let page = 0;
-    let blockAmount = 6;
+    let page = 1;
+    let blockAmount = 9;
     let items = document.querySelectorAll('.js-category-item');  
-    let pagesAmount = Math.round(items.length / 6,0) - 1;
+    let container = document.querySelector('.js-pagination');
+    let pagesAmount = Math.ceil(items.length / blockAmount,0);
     let clean = () => {
         items.forEach((item) => {
             item.style.display = 'none';
         });
         for(let i = 0; i < blockAmount; i++) {
-            if( i + page * blockAmount < items.length) items[i + page * blockAmount].style.display = 'flex';
+            if( i + (page - 1) * blockAmount < items.length) items[i + (page - 1) * blockAmount].style.display = 'flex';
         }
-    }
-    let paginationInit = () => {
-        let paginationItems = 6;
-        let container = document.querySelector('.js-pagination');
-        container.innerHTML = '';
-        let prev = document.createElement('li');
-        prev.className = 'pagination__item js-pagination-prev';
-        prev.innerHTML = `<a href="#" class="pagination__link--prev"></a>`;
-        let next = document.createElement('li');
-        next.innerHTML = `<a href="#" class="pagination__link--next"></a>`;
-        next.className = 'pagination__item js-pagination-next';
-        container.appendChild(prev);
-        for(let i = 0; i <= pagesAmount; i++) {
-            if(pagesAmount <= paginationItems) {
-                let item = `
-                <li class="pagination__item">
-                ${ i == page 
-                    ? `<span class="pagination__link active">${i + 1}</span>`
-                    : `<a href="#" class="pagination__link">${i + 1}</a>`
-                }
-                </li>`;
-                container.insertAdjacentHTML('beforeend',item);
-            } else {
+    }      
+    let prev = `
+    <li class="pagination__item js-pagination-prev">
+        <a href="#" class="pagination__link--prev"></a>
+    </li>`;
+    let next = `
+    <li class="pagination__item js-pagination-next">
+        <a href="#" class="pagination__link--next"></a>
+    </li>`;
+    let paginationInit = (c, m) => {
+        let current = c,
+            last = m,
+            delta = 2,
+            left = current - delta,
+            right = current + delta + 1,
+            range = [],
+            rangeWithDots = [],
+            l,
+            output = [];
 
-                // let item = `
-                // <li class="pagination__item">
-                // ${ i == page 
-                //     ? `<span class="pagination__link active">${i + 1}</span>`
-                //     : `<a href="#" class="pagination__link">${i + 1}</a>`
-                // }
-                // </li>`;
+        container.innerHTML = '';
+        for (let i = 1; i <= last; i++) {
+            if (i == 1 || i == last || i >= left && i < right) {
+                range.push(i);
             }
         }
-        container.appendChild(next);
-        [prev,next].forEach((item) => {
-            item.addEventListener('click',function() {
-                if(this.classList.contains('js-pagination-prev')) {
-                    page = page === 0 ? 0 : page - 1;
-                } else {
-                    page = page === pagesAmount ? pagesAmount : page + 1;
+    
+        for (let i of range) {
+            if (l) {
+                if (i - l === 2) {
+                    rangeWithDots.push(l + 1);
+                } else if (i - l !== 1) {
+                    rangeWithDots.push('...');
                 }
-                clean();
-                paginationInit();
-            });
+            }
+            rangeWithDots.push(i);
+            l = i;
+        }
+        
+        output = rangeWithDots.map((item) => {
+            let unit = `
+            <li class="pagination__item js-pagination-item">
+            ${ item == c 
+                ? `<span class="pagination__link active">${item}</span>`
+                : `<a href="#" class="pagination__link">${item}</a>`
+            }
+            </li>`;
+            return unit;
+        });
+        output.unshift(prev);
+        output.push(next);
+        output.forEach((item) => {
+            container.insertAdjacentHTML('beforeend',item);
         });
     }
-    clean();   
-    paginationInit(); 
-}
+    container.addEventListener('click', function(e) {
+        console.log(e.target.parentNode);
+        if(e.target.parentNode.classList.contains('js-pagination-prev')) {
+            page = page === 1 ? 1 : page - 1;
+            console.log('sa1',page);
+        } else if(e.target.parentNode.classList.contains('js-pagination-next')) {
+            page = page === pagesAmount ? pagesAmount : page + 1;
+            console.log('sa2',page);
+        } else if(e.target.parentNode.classList.contains('js-pagination-item')) {
+            page = parseInt(e.target.innerHTML);
+            console.log('sa3',page);
+        }
+        clean();
+        paginationInit(page,pagesAmount);
+    });
 
+    clean();   
+    paginationInit(page, pagesAmount); 
+}
 function sliderInit() {    
     if(!document.querySelector('.js-slider')) {
         return;
