@@ -12,6 +12,7 @@ function getRequest(url) {
         return res.json().then(function(data) {
             showAll(data);
             showCategory(data);
+            showPage(data);
         });
     })
     .catch(function(err) {
@@ -75,44 +76,58 @@ function showAll(data) {
     
 }
 
-function showCategory(data) {    
+function showCategory(data) {   
+    let filterData; 
     let category = document.querySelector('.js-category');
     if(!category) return;
-    let filterSearch = (item,i) => {
+    let addBlock = (data) => {
+        category.innerHTML = '';
+        data.forEach((item) => {
+            let block = document.createElement('a');
+            block.href = `material-item.html?id=${item.id}`; 
+            block.target = '_blank'; 
+            block.className = 'category__item js-category-item';  
+            block.id = `${item.id}`;        
+            let image = document.createElement('img');
+            image.src = `${item.thumbnail == 0 ? `../img/${item.type}-thumb.png` : item.thumbnail}`;       
+            image.className = 'category__thumb';
+            let text = document.createElement('p');
+            text.innerHTML = `${item.name}`;
+            text.className = 'category__name';
+            block.appendChild(image);
+            block.appendChild(text);
+            category.appendChild(block);
+        });
+    };
+    let filterSearch = (data) => {
         let input = document.querySelector('.js-input');
         let form = document.querySelector('.js-search');
         let query;
-        input.addEventListener('change',function(e) {
-            query = e.target.value;
-        });
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            console.log('query',query);
+            query = input.value;
+            filterData = data.filter(item => {
+                if(query === '' || item.name.toLowerCase().includes(query)) {                    
+                    return true;
+                }
+            });
+            addBlock(filterData);
+            pagination(); 
+        });  
+        addBlock(data);      
+    }; 
+    filterSearch(data);
+    pagination(); 
+}
+
+function showPage(data) {
+    let container = document.querySelector('.js-material');
+    if(container) {
+        let params = new URLSearchParams(window.location.search);    
+        let currentData = data.filter( item => {
+            return item.id === params.get('id');
         });
-        // if(item.name.toLowerCase().includes(query) || query !== '') {
-        //     return true;
-        // }
-        if(query !== '') {
-            console.log(item);
-            return true;
-        }
-    };   
-    data.filter(filterSearch).forEach((item) => {
-        let block = document.createElement('a');
-        block.href = '#';  
-        block.className = 'category__item js-category-item';  
-        block.id = `${item.id}`;        
-        let image = document.createElement('img');
-        image.src = `${item.thumbnail == 0 ? `../img/${item.type}-thumb.png` : item.thumbnail}`;       
-        image.className = 'category__thumb';
-        let text = document.createElement('p');
-        text.innerHTML = `${item.name}`;
-        text.className = 'category__name';
-        block.appendChild(image);
-        block.appendChild(text);
-        category.appendChild(block);
-    });
-    pagination();    
+    }
 }
 
 function pagination() {
@@ -184,16 +199,12 @@ function pagination() {
         });
     }
     container.addEventListener('click', function(e) {
-        console.log(e.target.parentNode);
         if(e.target.parentNode.classList.contains('js-pagination-prev')) {
             page = page === 1 ? 1 : page - 1;
-            console.log('sa1',page);
         } else if(e.target.parentNode.classList.contains('js-pagination-next')) {
             page = page === pagesAmount ? pagesAmount : page + 1;
-            console.log('sa2',page);
         } else if(e.target.parentNode.classList.contains('js-pagination-item')) {
             page = parseInt(e.target.innerHTML);
-            console.log('sa3',page);
         }
         clean();
         paginationInit(page,pagesAmount);
