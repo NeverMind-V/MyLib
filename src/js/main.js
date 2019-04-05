@@ -80,6 +80,53 @@ function showCategory(data) {
     let filterData; 
     let category = document.querySelector('.js-category');
     if(!category) return;
+    let addFilter = (data) => {
+        let set = new Set();
+        let container = document.querySelector('.js-filter-container');
+        let arr = [];
+        data.forEach(item => {
+            set.add(item.type);
+        });
+        let h3 = document.createElement('h3');
+        h3.className = 'category__title';
+        h3.innerHTML = `Тип материала`;
+        arr.push(h3);
+        set.forEach(item => {
+            let block = document.createElement('div');
+            block.className = 'category__filter-block';
+            let input = document.createElement('input');
+            input.className = 'category__filter-input js-filter-input';
+            input.type = 'checkbox';
+            input.id = `${item}`;
+            let label = document.createElement('label');
+            label.className = 'category__filter-label';
+            label.htmlFor = `${item}`;
+            let span = document.createElement('span');
+            span.className = 'category__filter-name';
+            switch(item) {
+                case 'music':
+                    span.innerHTML = 'Аудио';
+                    break;
+                case 'file-alt':
+                    span.innerHTML = 'Текст';
+                    break;
+                case 'video':
+                    span.innerHTML = 'Видео';
+                    break;
+                default:
+                    span.innerHTML = item;                    
+            }
+            block.appendChild(input);
+            block.appendChild(label);
+            block.appendChild(span);
+            arr.push(block);
+        });
+        arr.forEach(item => {
+            container.appendChild(item);
+        });
+        
+    };
+    
     let addBlock = (data) => {
         category.innerHTML = '';
         data.forEach((item) => {
@@ -99,6 +146,37 @@ function showCategory(data) {
             category.appendChild(block);
         });
     };
+
+    let filterHandler = (data) => {
+        let filter = [];
+        let filterData;
+        let input = document.querySelectorAll('.js-filter-input');
+        input.forEach(item => {
+            item.addEventListener('change', function() {
+                console.log(this.checked,this.id);
+                if(this.checked) {
+                    filter.push(this.id);
+                } else {
+                    if(filter.indexOf(this.id) !== -1) {
+                        filter.splice(filter.indexOf(this.id),1);
+                    }
+                }
+                console.log(filter);  
+                filterData = data.filter(item => {
+                    let state;
+                    filter.forEach(filterItem => {
+                        if(filterItem === item.type) {
+                            console.log('sad');
+                            
+                        }
+                    });
+                });
+                console.log('filterdata',filterData,data);              
+            });
+        });
+        
+    };
+
     let filterSearch = (data) => {
         let input = document.querySelector('.js-input');
         let form = document.querySelector('.js-search');
@@ -115,7 +193,9 @@ function showCategory(data) {
             pagination(); 
         });  
         addBlock(data);      
-    }; 
+    };     
+    addFilter(data);
+    filterHandler(data);    
     filterSearch(data);
     pagination(); 
 }
