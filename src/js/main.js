@@ -182,11 +182,16 @@ function showCategory(data) {
     let filterSearch = (data) => {
         let input = document.querySelector('.js-input');
         let form = document.querySelector('.js-search');
+        let filterInput = document.querySelectorAll('.js-filter-input');
         let query;
         let filterData;
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             query = input.value;
+            input.value = '';
+            filterInput.forEach(item => {
+                item.checked = false;
+            });
             filterData = data.filter(item => {
                 if(query === '' || item.name.toLowerCase().includes(query)) {                    
                     return true;
