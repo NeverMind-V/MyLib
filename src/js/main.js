@@ -163,24 +163,27 @@ function showCategory(data) {
                 }
                 console.log(filter);  
                 filterData = data.filter(item => {
-                    let state;
+                    let state = false;
                     filter.forEach(filterItem => {
                         if(filterItem === item.type) {
                             console.log('sad');
-                            
+                            state = true;
                         }
                     });
+                    return state;
                 });
-                console.log('filterdata',filterData,data);              
+                filterData = filterData.length ? filterData : data;
+                addBlock(filterData);
+                pagination();               
             });
-        });
-        
+        });        
     };
 
     let filterSearch = (data) => {
         let input = document.querySelector('.js-input');
         let form = document.querySelector('.js-search');
         let query;
+        let filterData;
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             query = input.value;
@@ -207,6 +210,8 @@ function showPage(data) {
         let currentData = data.filter( item => {
             return item.id === params.get('id');
         });
+        console.log(currentData[0].name);
+        container.innerHTML = `${currentData[0].name}`;
     }
 }
 
