@@ -9,8 +9,8 @@ function getRequest(url) {
             res.status);
             return;
         }
-        return res.json().then(function(data) {
-            showAll(data);
+        return res.json().then(function(data) {            
+            showAll(data);            
             showCategory(data);
             showPage(data);
         });
@@ -76,8 +76,7 @@ function showAll(data) {
     
 }
 
-function showCategory(data) {   
-    let filterData; 
+function showCategory(data) {
     let category = document.querySelector('.js-category');
     if(!category) return;
     let addFilter = (data) => {
@@ -147,6 +146,53 @@ function showCategory(data) {
         });
     };
 
+    let sortData = (data) => { 
+        let sortData;   
+        let sortContainer = document.querySelector('.js-sort');
+        if(!sortContainer) return;
+        let nameSortAsc = (a,b) => {
+            if(a.name > b.name) {
+                return 1;
+            }
+            if(a.name < b.name) {
+                return -1;
+            }
+            return 0;
+        };
+        let nameSortDesc = (a,b) => {
+            if(a.name > b.name) {
+                return -1;
+            }
+            if(a.name < b.name) {
+                return 1;
+            }
+            return 0;
+        };
+        let nameSortNewFirst = (a,b) => {
+            return b.id - a.id;
+        };
+        let nameSortOldFirst = (a,b) => {
+            return a.id - b.id;
+        };
+        sortContainer.addEventListener('click', function(e) {                  
+            if(e.target.classList.contains('js-asc')) {
+                sortData = data.sort(nameSortAsc);
+            }
+            if(e.target.classList.contains('js-desc')) {
+                sortData = data.sort(nameSortDesc);
+            }
+            if(e.target.classList.contains('js-new')) {
+                sortData = data.sort(nameSortNewFirst);
+            }
+            if(e.target.classList.contains('js-old')) {                
+                sortData = data.sort(nameSortOldFirst);
+            }
+            sortData = sortData == undefined ? data : sortData;
+            addBlock(sortData);
+            pagination();
+        });        
+    }
+
     let filterHandler = (data) => {
         let filter = [];
         let filterData;
@@ -205,6 +251,7 @@ function showCategory(data) {
     addFilter(data);
     filterHandler(data);    
     filterSearch(data);
+    sortData(data);
     pagination(); 
 }
 
@@ -303,6 +350,7 @@ function pagination() {
     clean();   
     paginationInit(page, pagesAmount); 
 }
+
 function sliderInit() {    
     if(!document.querySelector('.js-slider')) {
         return;
