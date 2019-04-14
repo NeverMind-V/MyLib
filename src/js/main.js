@@ -391,7 +391,24 @@ function sliderInit() {
     showSlides(currentSlide,items,dots);
 }
 
+function menuBtnToggle() {
+    let btn = document.querySelector('.js-menu-btn');
+    let item = document.querySelectorAll('.js-menu-item');
+    let block = document.querySelector('.js-menu-list');
+    btn.addEventListener('click', function() {
+        block.classList.toggle('active');
+    });
+    item.forEach(_ => {
+        _.addEventListener('click',function() {
+            if(this.querySelector('.js-menu-sub')) {
+                this.querySelector('.js-menu-sub').classList.toggle('active');
+            }
+        });
+    });
+}
+
 window.addEventListener('load', function() {
     getRequest('http://5c9915184236560014393204.mockapi.io/mylib/files');
     sliderInit();
+    menuBtnToggle();
 });
