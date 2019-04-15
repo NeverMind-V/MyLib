@@ -10,8 +10,8 @@
     "partials/typography",
     "partials/slider",
     "partials/contacts",
-    "partials/category",
-    "partials/media";
+    "partials/category";
+    
 
 * {
     margin:0;
@@ -192,3 +192,7 @@
         }
     }
 }
+
+
+
+@import "partials/media";

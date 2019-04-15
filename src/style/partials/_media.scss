@@ -1,10 +1,19 @@
 @media screen and (max-width: 768px) {
     .menu {
         &__btn {
-            display:block!important;
+            display:block;
+        }
+    }
+    .main {
+        &__header--underlined {
+            @include font-size(28px);
+        }
+        &__inner {
+            width:90%;
         }
     }
     .header {
+        padding: 0 5%;
         &__list {
             width:100%;
             flex-direction:column;
@@ -89,6 +98,85 @@
             &-link {
                 padding-left:50px;
             }            
+        }
+    }
+
+    .slider {
+        &__wrapper {
+            padding:0;
+        }
+        &__button {
+            display:none;
+        }
+    }
+
+    .category {
+        &__item {
+            width:calc(50% - 20px);
+        } 
+        &__filter {
+            flex-direction:column;
+            max-width: none;
+            margin-bottom:20px;
+            padding-bottom:20px;
+            &-block {
+                &:last-child {
+                    margin-bottom:5px;
+                }
+            }
+            &-container {
+                display:flex;
+                flex-wrap:wrap;
+            }
+        }        
+        &__sort {
+            flex-direction:row;
+            flex-wrap: wrap;
+            &-item {
+                &:not(:last-child) {
+                    margin-right:10px;
+                }
+            }
+        }
+        &__section {
+            flex-direction:column;
+        }
+        &__main {
+            &-wrapper {
+                padding-left:0;
+            }
+        }
+    }
+}
+@media screen and (min-width:579px) and (max-width: 768px) {
+    .main {
+        &__link {
+            width:calc(50% - 30px);
+        }
+    }
+}
+@media screen and (max-width: 578px) {
+    .main {
+        &__link {
+            width:calc(100% - 30px);
+        }
+        &__header {
+            text-align:center;
+        }
+    }
+    .category {
+        &__form {
+            width:100%;
+            margin-bottom:10px;
+        } 
+        &__item {
+            width:calc(100% - 20px);
+        }
+        &__sort {
+            flex-direction: column;
+        }
+        &__filter-container {
+            flex-direction:column;
         }
     }
 }
