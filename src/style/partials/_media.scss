@@ -26,6 +26,7 @@
             }
             &-item {
                 display:flex;
+                position:relative;
                 flex-direction:column;
                 justify-content:center;
                 align-items:center;
@@ -37,22 +38,46 @@
                 &:hover {
                     background:lighten($green,1%);
                 }
+                &.multi {
+                    &:before {
+                        content:'';
+                        display:block;
+                        position: absolute;
+                        right:50px;
+                        top:13px;
+                        border-top:7px solid $white;
+                        border-left:5px solid transparent;
+                        border-right:5px solid transparent;
+                        transition:$main_animation;
+                    }
+                    &.active {
+                        &:before {
+                            transform:rotate(-180deg);
+                        }
+                        .header__sublist {
+                            max-height:999px;
+                        }
+                    }
+                    .header__list-link {
+                        width:auto;
+                    }
+                }    
             }
             &-link {
                 display:inline-block;
                 height:auto;
+                width:100%;
                 line-height:unset;
                 text-align:center;
                 padding:5px 0;                
             }
         }
         &__sublist {  
-            display:none;          
+            max-height:0;         
             position: static;
             width:100%;
-            &.active {
-                display:flex;
-            }
+            overflow:hidden;
+            transition:$main_animation;            
             &-item {
                 display:none;
                 background:darken($green,20%);

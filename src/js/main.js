@@ -397,12 +397,15 @@ function menuBtnToggle() {
     let block = document.querySelector('.js-menu-list');
     btn.addEventListener('click', function() {
         block.classList.toggle('active');
+        if(!block.classList.contains('active')) {
+            item.forEach(_ => {
+                _.classList.remove('active');
+            });
+        }
     });
     item.forEach(_ => {
-        _.addEventListener('click',function() {
-            if(this.querySelector('.js-menu-sub')) {
-                this.querySelector('.js-menu-sub').classList.toggle('active');
-            }
+        _.addEventListener('click',function(e) {
+            if(this.classList.contains('multi') && e.target.classList.contains('js-menu-item')) this.classList.toggle('active');
         });
     });
 }
