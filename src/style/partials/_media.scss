@@ -113,6 +113,9 @@
     .category {
         &__item {
             width:calc(50% - 20px);
+            // transform:scale(1);
+            // opacity:1;
+            // animation:none;
         } 
         &__filter {
             flex-direction:column;
