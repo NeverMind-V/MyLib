@@ -255,17 +255,17 @@ function showCategory(data) {
     pagination(); 
 }
 
-function showPage(data) {
-    let container = document.querySelector('.js-material');
-    if(container) {
-        let params = new URLSearchParams(window.location.search);    
-        let currentData = data.filter( item => {
-            return item.id === params.get('id');
-        });
-        console.log(currentData[0].name);
-        container.innerHTML = `${currentData[0].name}`;
-    }
-}
+// function showPage(data) {
+//     let container = document.querySelector('.js-material');
+//     if(container) {
+//         let params = new URLSearchParams(window.location.search);    
+//         let currentData = data.filter( item => {
+//             return item.id === params.get('id');
+//         });
+//         console.log(currentData[0].name);
+//         container.innerHTML = `${currentData[0].name}`;
+//     }
+// }
 
 function pagination() {
     let page = 1;

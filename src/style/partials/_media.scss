@@ -101,6 +101,16 @@
         }
     }
 
+    .material {
+        &__thumb {
+            width:100%;
+        }
+        &__block {
+            margin:20px 0 0;
+            width:100%;
+        }
+    }
+
     .slider {
         &__wrapper {
             padding:0;
