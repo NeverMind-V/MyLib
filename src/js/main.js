@@ -194,10 +194,16 @@ function showCategory(data) {
     }
 
     let filterHandler = (data) => {
-        let filter = [];
+        let url = new URLSearchParams(window.location.search);
+        let filter = url ? [url.get('filter')] : [];
+        console.log('filter1',filter,url.get('filter'));
         let filterData;
         let input = document.querySelectorAll('.js-filter-input');
+
         input.forEach(item => {
+            if(item.id == url.get('filter')) {
+                item.checked = true;                  
+            }
             item.addEventListener('change', function() {
                 console.log(this.checked,this.id);
                 if(this.checked) {
@@ -221,16 +227,32 @@ function showCategory(data) {
                 filterData = filterData.length ? filterData : data;
                 addBlock(filterData);
                 pagination();               
+            });      
+        }); 
+        filterData = data.filter(item => {
+            let state = false;
+            filter.forEach(filterItem => {
+                if(filterItem === item.type) {
+                    console.log('sad');
+                    state = true;
+                }
             });
-        });        
+            return state;
+        });
+        console.log('filterdata',filterData);
+        filterData = filterData.length ? filterData : data;
+        addBlock(filterData);
+        pagination(); 
+        return filterData; 
     };
 
-    let filterSearch = (data) => {
+    let filterSearch = (filter,data) => {
         let input = document.querySelector('.js-input');
         let form = document.querySelector('.js-search');
         let filterInput = document.querySelectorAll('.js-filter-input');
         let query;
         let filterData;
+        console.log('filter',filter,data);
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             query = input.value;
@@ -243,14 +265,14 @@ function showCategory(data) {
                     return true;
                 }
             });
+            console.log('filterData44',filterData);
             addBlock(filterData);
             pagination(); 
         });  
-        addBlock(data);      
+        addBlock(filter);      
     };     
     addFilter(data);
-    filterHandler(data);    
-    filterSearch(data);
+    filterSearch(filterHandler(data),data);
     sortData(data);
     pagination(); 
 }
