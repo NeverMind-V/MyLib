@@ -277,17 +277,60 @@ function showCategory(data) {
     pagination(); 
 }
 
-// function showPage(data) {
-//     let container = document.querySelector('.js-material');
-//     if(container) {
-//         let params = new URLSearchParams(window.location.search);    
-//         let currentData = data.filter( item => {
-//             return item.id === params.get('id');
-//         });
-//         console.log(currentData[0].name);
-//         container.innerHTML = `${currentData[0].name}`;
-//     }
-// }
+function showPage(data) {     
+    let container = document.querySelector('.js-material');
+    if(container) {
+        let params = new URLSearchParams(window.location.search); 
+        let currentData = data.filter( item => {
+            return item.id === params.get('id');
+        });
+        currentData = currentData[0];
+        console.log(currentData);
+        switch (currentData.type) {
+            case 'file-alt':
+                container.innerHTML = `
+                <section class="material">
+                    <div class="material__thumb-wrapper">
+                        <img src="${currentData.thumbnail}" alt="thumbnail" class="material__thumb-text">
+                    </div>
+                    <div class="material__block">
+                        <h1 class="material__title">${currentData.name}</h1>
+                        <p class="material__desription">${currentData.text}</p>
+                    </div>
+                </section>`;
+                break;
+            case 'music':
+                container.innerHTML = `
+                <section class="material">
+                    <figure class="material__audio-figure">
+                        <div class="material__thumb-wrapper">
+                            <img src="${currentData.thumbnail}" alt="thumbnail" class="material__thumb-audio">
+                        </div>                        
+                        <figcaption>
+                            <h1 class="material__title">${currentData.name}</h1>
+                        </figcaption>
+                        <audio controls class="material__audio">
+                            <source src="${currentData.url}" type="audio/mpeg">
+                        </audio>
+                    </figure>                    
+                </section>`;
+                break;
+            case 'video':
+                container.innerHTML = `
+                <section class="material">
+                    <figure>
+                        <video controls class="material__video">
+                            <source src="${currentData.url}" type="audio/mp4">
+                        </video>
+                        <figcaption>
+                            <h1 class="material__title">${currentData.name}</h1>
+                        </figcaption>
+                    </figure>                    
+                </section>`;
+                break;            
+        }
+    }
+}
 
 function pagination() {
     let page = 1;

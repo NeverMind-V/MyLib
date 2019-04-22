@@ -28,6 +28,11 @@
         @include font-size(18px);
         color:$blue;
     }
+    &__thumb {
+        max-width: 100%;
+        height:auto;
+        display:block;
+    }
     &__filter {
         width:100%;
         max-width:300px;
@@ -60,7 +65,7 @@
             background:$blue;
         }
         &-name {
-            @include font-size(16px);            
+            @include font-size(16px);                       
         }
     }
     
@@ -86,7 +91,6 @@
     &__main {
         display:flex;
         flex-wrap: wrap;
-        align-items:flex-start;
         margin:0 -10px;
         &-wrapper {
             display:flex;
@@ -122,5 +126,6 @@
     &__name {
         @include font-size(16px);
         color:$blue;
+        margin-top:5px; 
     }
 }

@@ -20,21 +20,24 @@ html: 'build/',
 js: 'build/js/',
 css: 'build/css/',
 img: 'build/img/',
-fonts: 'build/fonts/'
+fonts: 'build/fonts/',
+upload: 'build/upload/'
 },
 src: { 
 html: 'src/*.html',
 js: 'src/js/main.js',
 style: 'src/style/main.scss',
 img: 'src/img/*',
-fonts: 'src/fonts/*'
+fonts: 'src/fonts/*',
+upload: 'src/upload/**/**/*'
 },
 watch: { 
 html: 'src/**/*.html',
 js: 'src/js/**/*.js',
 style: 'src/style/**/*.scss',
 img: 'src/img/*',
-fonts: 'src/fonts/*'
+fonts: 'src/fonts/*',
+upload: 'src/upload/**/**/*'
 },
 clean: './build'
 };
@@ -94,9 +97,17 @@ gulp.task('fonts:build', function(done) {
     done();
 });
 
+
+gulp.task('upload:build', function (done) {
+    gulp.src(path.src.upload) 
+        .pipe(gulp.dest(path.build.upload)) 
+        .pipe(reload({stream: true}));
+    done();
+});  
+
 gulp.task('build', gulp.parallel('html:build',
 'js:build',
-'style:build','img:build','fonts:build'));
+'style:build','img:build','fonts:build','upload:build'));
 
 gulp.task('watch:js', function(done) {
     gulp.watch([path.watch.js], gulp.series(['js:build']));   
@@ -118,8 +129,12 @@ gulp.task('watch:fonts', function(done) {
     gulp.watch([path.watch.fonts], gulp.series(['fonts:build']));
     done();
 });
+gulp.task('watch:upload', function(done) {
+    gulp.watch([path.watch.upload], gulp.series(['upload:build']));
+    done();
+});
 
-gulp.task('watch', gulp.parallel('watch:js', 'watch:html', 'watch:style', 'watch:img', 'watch:fonts'));
+gulp.task('watch', gulp.parallel('watch:js', 'watch:html', 'watch:style', 'watch:img', 'watch:fonts', 'watch:upload'));
 
 
 gulp.task('clean', function(callback){
