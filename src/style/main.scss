@@ -186,6 +186,34 @@
     }
 }
 
+.cross {
+    display:block;
+    position:relative;
+    height:100%;
+    width:100%;
+    &:before,&:after {
+        content:'';
+        display:block;
+        position:absolute;
+        width:2px;
+        height:100%;        
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%) rotate(-45deg);
+        background:$blue;
+    }
+    &:after {
+        transform:translate(-50%,-50%) rotate(45deg);
+    }
+    &__wrapper {
+        position:absolute;
+        top:10px;
+        right:10px;   
+        width:40px;
+        height:40px;     
+    }   
+}
+
 
 
 @import "partials/media";

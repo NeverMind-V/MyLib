@@ -488,6 +488,7 @@ function addCategoryItem() {
             dialog.querySelector('.category__dialog').classList.add('zoomIn');
             dialog.classList.add('active');
         } else if(e.target.classList.contains('js-category-add-dialog') || e.target.classList.contains('js-category-close')) {
+            console.log('asdas');
             dialog.querySelector('.category__dialog').classList.remove('zoomIn');
             dialog.querySelector('.category__dialog').classList.add('zoomOut');
             setTimeout(function() {
