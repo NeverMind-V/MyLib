@@ -137,10 +137,14 @@ function showCategory(data) {
             let image = document.createElement('img');
             image.src = `${item.thumbnail == 0 ? `../img/${item.type}-thumb.png` : item.thumbnail}`;       
             image.className = 'category__thumb';
+            let a = document.createElement('a');
+            a.innerHTML = `${item.author}`;
+            a.className = 'category__author';
             let text = document.createElement('p');
             text.innerHTML = `${item.name}`;
             text.className = 'category__name';
             block.appendChild(image);
+            block.appendChild(a);
             block.appendChild(text);
             category.appendChild(block);
         });
