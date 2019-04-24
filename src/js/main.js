@@ -479,8 +479,28 @@ function menuBtnToggle() {
     });
 }
 
+function addCategoryItem() {
+    let url = window.location.href;
+    let dialog = document.querySelector('.js-category-add-dialog');
+    if(url.indexOf('category.html') === -1) return;
+    document.addEventListener('click',function(e) {
+        if(e.target.classList.contains('js-category-add-btn')) {
+            dialog.querySelector('.category__dialog').classList.add('zoomIn');
+            dialog.classList.add('active');
+        } else if(e.target.classList.contains('js-category-add-dialog') || e.target.classList.contains('js-category-close')) {
+            dialog.querySelector('.category__dialog').classList.remove('zoomIn');
+            dialog.querySelector('.category__dialog').classList.add('zoomOut');
+            setTimeout(function() {
+                dialog.querySelector('.category__dialog').classList.remove('zoomOut');
+                dialog.classList.remove('active');
+            },400);
+        }      
+    });
+}
+
 window.addEventListener('load', function() {
     getRequest('http://5c9915184236560014393204.mockapi.io/mylib/files');
     sliderInit();
     menuBtnToggle();
+    addCategoryItem();
 });

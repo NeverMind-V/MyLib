@@ -17,7 +17,7 @@
                         <input type="submit" class="search__submit js-submit" value="Поиск">
                     </form>                       
                                        
-                    <a href="#" class="category__btn">Добавить материалы</a>                    
+                    <a href="#" class="category__btn js-category-add-btn">Добавить материалы</a>                    
                 </div>  
                 <section class="category__section">
                     <aside class="category__filter">
@@ -41,9 +41,21 @@
                         <div class="pagination-wrapper">
                             <ul class="pagination js-pagination"></ul>
                         </div>
+                    </div>                    
+                </section>  
+                <div class="category__dialog-wrapper js-category-add-dialog">
+                    <div class="category__dialog">
+                        <div class="cross js-category-close"></div>
+                        <h3 class="category__header">Добавить материал</h3>
+                        <label for="" class="category__label--required">Имя</label>
+                        <input type="text" class="category__input">
+                        <label for="" class="category__label--required">Email</label>
+                        <input type="text" class="category__input">
+                        <label for="" class="category__label--required">Тип материала</label>
+                        <input type="file" class="category__file">
+                        <input type="submit" class="category__submit" value="Добавить">
                     </div>
-                    
-                </section>              
+                </div>                
             </div>            
         </main>
         //= template/footer.html

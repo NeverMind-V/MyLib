@@ -97,4 +97,18 @@ body {
       padding-bottom: 4px;
     }
   }
+
+%label {
+  display:block;
+  @include font-size(16px);
+  color:$blue;
+  margin-bottom:5px;
+  &--required {
+    @extend %label;
+    &:after {
+        content:'*';
+        color:$red;
+    }
+  }
+}
   

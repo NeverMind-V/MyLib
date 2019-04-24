@@ -134,4 +134,54 @@
         font-weight:700;
         align-self:flex-start;
     }
+    &__dialog {   
+        display:flex;
+        flex-direction: column;
+        width:100%;
+        max-width:500px;
+        padding: 20px 15px;
+        border:1px solid $border;
+        background:$white;
+        &-wrapper {
+            position:absolute;
+            display:none;
+            align-items:center;
+            justify-content: center;
+            top:50%;
+            left:50%;
+            width:100%;
+            height:100vh;
+            z-index:20;
+            transform:translate(-50%,-50%);
+            background:rgba($black,0);
+            transition:$main_animation;
+            &.active {
+                background:rgba($black,0.3);
+                display:flex;
+            }
+        }
+    }
+    &__header {
+        @extend .main__header;
+        text-align:center;
+    }
+
+    &__label {
+        @extend %label;
+        &--required {
+            @extend %label--required;
+        }
+    }
+    &__file {
+        margin-bottom:20px;
+    }
+    &__submit {
+        @extend %btn;
+        color:$white;
+    }
+    &__input {
+        @extend %input;
+        height:40px;
+        margin-bottom:10px;
+    }
 }
