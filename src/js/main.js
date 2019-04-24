@@ -1,6 +1,3 @@
-//
-// global libs
-
 function getRequest(url) {
     fetch(url)
     .then((res) => {
@@ -9,10 +6,11 @@ function getRequest(url) {
             res.status);
             return;
         }
-        return res.json().then(function(data) {            
-            showAll(data);            
-            showCategory(data);
-            showPage(data);
+        return res.json().then(function(data) {
+            localStorage.setItem('data',JSON.stringify(data));            
+            showAll(JSON.parse(localStorage.data));            
+            showCategory(JSON.parse(localStorage.data));
+            showPage(JSON.parse(localStorage.data));            
         });
     })
     .catch(function(err) {
@@ -222,7 +220,6 @@ function showCategory(data) {
                     let state = false;
                     filter.forEach(filterItem => {
                         if(filterItem === item.type) {
-                            console.log('sad');
                             state = true;
                         }
                     });
@@ -237,7 +234,6 @@ function showCategory(data) {
             let state = false;
             filter.forEach(filterItem => {
                 if(filterItem === item.type) {
-                    console.log('sad');
                     state = true;
                 }
             });
@@ -488,7 +484,6 @@ function addCategoryItem() {
             dialog.querySelector('.category__dialog').classList.add('zoomIn');
             dialog.classList.add('active');
         } else if(e.target.classList.contains('js-category-add-dialog') || e.target.classList.contains('js-category-close')) {
-            console.log('asdas');
             dialog.querySelector('.category__dialog').classList.remove('zoomIn');
             dialog.querySelector('.category__dialog').classList.add('zoomOut');
             setTimeout(function() {
