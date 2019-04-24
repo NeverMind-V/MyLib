@@ -197,4 +197,9 @@
             width:calc(100% - 30px);
         }
     }
+    .contacts {
+        &__input {
+            width:100%;
+        }
+    }
 }

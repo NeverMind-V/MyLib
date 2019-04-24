@@ -34,6 +34,26 @@
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d438.83465365033527!2d-0.15865901245937206!3d51.52378857224949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfcd227d9a53748f3!2z0JzRg9C30LXQuSDQqNC10YDQu9C-0LrQsCDQpdC-0LvQvNGB0LA!5e0!3m2!1sru!2sua!4v1553707581530" frameborder="0" style="border:0" allowfullscreen></iframe>
                         </div>
                     </div>
+                    <div class="contacts__block">
+                        <h3 class="contacts__header">Форма связи</h3>
+                                                    
+                            <form action="" id="feedback-form" class="contacts__form">
+                                <p class="contacts__alert js-form-alert">Error</p>
+                                <label for="feedback-name" class="contacts__label--required">Имя</label>
+                                <input type="text" id="feedback-name" name="user__name" class="contacts__input js-contact-name">
+                                <label for="feedback-email" class="contacts__label--required">Email</label>
+                                <input type="text" id="feedback-email" name="user__email" class="contacts__input js-contact-email">
+                                <label for="feedback-phone" class="contacts__label">Телефон</label>
+                                <input type="text" id="feedback-phone" name="user__phone" class="contacts__input js-contact-phone">
+                                <label for="feedback-message" class="contacts__label--required">Ваше сообщение</label>
+                                <textarea name="message" id="feedback-message" cols="30" rows="10" class="contacts__textarea js-contact-textarea"></textarea>
+                                <input type="submit" class="contacts__submit js-contact-submit" value="Отправить">
+                            </form>
+                            <!-- <p class="contacts__text--short">Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                                Ipsum alias eos, excepturi architecto aliquid vel corrupti pariatur minima illo soluta.
+                            </p> -->
+                                               
+                    </div>
                 </div>                
             </div>            
         </main>

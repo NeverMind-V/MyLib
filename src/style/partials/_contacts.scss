@@ -1,6 +1,8 @@
 .contacts {
     padding:10px 20px 50px;
     &__block {
+        display:flex;
+        flex-direction:column;
         &:not(:last-child) {
             margin-bottom:20px;
         }
@@ -16,6 +18,14 @@
         @include font-size(16px);
         color:rgba($blue,0.8);
         margin-left:30px;
+        &--short {
+            @extend .contacts__text;
+            @include font-size(24px);
+            margin:0;
+            max-width:30%;
+            padding:20px;
+            line-height:48px;
+        }
     }
     &__list {
         display: flex;
@@ -33,5 +43,52 @@
             height:400px;
         }
         
+    }
+    &__form {
+        width:100%;
+        max-width:700px;
+    }
+    &__submit {
+        @extend %btn;
+        color:$white;
+    }
+    &__label {
+        display:block;
+        @include font-size(16px);
+        color:$blue;
+        margin-bottom:5px;
+        &--required {
+            @extend .contacts__label;
+            &:after {
+                content:'*';
+                color:$red;
+            }
+        }
+    }
+    &__alert {
+        display:none;
+        width:50%;
+        padding:5px 15px;
+        background:$red;
+        color:$white;
+        margin:20px 0;
+    }
+    &__input {
+        @extend %input;
+        display:block;  
+        width:50%;
+        height:40px;  
+        margin-bottom:15px;    
+    }
+    &__textarea {
+        @extend %input;
+        display:block;
+        width:100%;
+        padding:10px;
+        margin-bottom:15px;
+    }
+    &__row {
+        display:flex;
+        flex-wrap:wrap;
     }
 }
