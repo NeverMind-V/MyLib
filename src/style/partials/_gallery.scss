@@ -1,0 +1,14 @@
+.gallery {
+    display:flex;
+    flex-wrap:wrap;
+    margin:-15px -15px;
+    &__item {
+        width:calc(33.33% - 30px);
+        margin:15px 15px;
+    }
+    &__thumb {
+        max-width:100%;
+        height:auto;
+        display:block;
+    }
+}

@@ -192,4 +192,9 @@
             flex-direction:column;
         }
     }
+    .gallery {
+        &__item {
+            width:calc(100% - 30px);
+        }
+    }
 }
