@@ -22,10 +22,10 @@ function showAll(data) {
     let storage = document.querySelector('.js-storage');
     if(!storage) return;
     let nameSort = (a,b) => {
-        if(a.name > b.name) {
+        if(a.name.toLowerCase() > b.name.toLowerCase()) {
             return 1;
         }
-        if(a.name < b.name) {
+        if(a.name.toLowerCase() < b.name.toLowerCase()) {
             return -1;
         }
         return 0;
@@ -36,7 +36,7 @@ function showAll(data) {
     let dataStorage = [...data];
 
     dataStorage.sort(nameSort).forEach((item,i) => {        
-        if(i == 0 || item.name[0] == dataStorage[i - 1].name[0]) {
+        if(i == 0 || item.name[0].toLowerCase() == dataStorage[i - 1].name[0].toLowerCase()) {
             sameArray.push(item);            
         } else {
             fullArray.push(sameArray);
