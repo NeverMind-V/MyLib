@@ -5,13 +5,16 @@ watch = require('gulp-watch'),
 prefixer = require('gulp-autoprefixer'),
 uglify = require('gulp-uglify-es').default,
 sass = require('gulp-sass'),
+source = require('vinyl-source-stream'),
+buffer = require('vinyl-buffer'),
 sourcemaps = require('gulp-sourcemaps'),
 rigger = require('gulp-rigger'),
 cssmin = require('gulp-minify-css'),
 rimraf = require('rimraf'),
 browserSync = require('browser-sync'),
+browserify = require('browserify'),
+babelify = require('babelify'),
 reload = browserSync.reload;
-
 
 var path = {
 
@@ -60,18 +63,26 @@ gulp.task('html:build', function (done) {
         .pipe(gulp.dest(path.build.html)) 
         .pipe(reload({stream: true}));
     done();
-});    
+}); 
 
-gulp.task('js:build', function(done) {
-    gulp.src(path.src.js)
-        .pipe(rigger())
-        .pipe(sourcemaps.init())
-        .pipe(uglify())
-        .pipe(sourcemaps.write())
+gulp.task('js:build', function () {
+    var b = browserify({
+      entries: path.src.js,
+      debug: true,
+      transform: [babelify.configure({
+        presets: ['@babel/preset-env']
+      })]
+    });
+  
+    return b.bundle()
+        .pipe(source('main.js'))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({ loadMaps: true }))
+            .pipe(uglify())
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(path.build.js))
         .pipe(reload({stream: true}));
-    done();
-});
+  });
 
 gulp.task('style:build', function(done) {
     gulp.src(path.src.style)

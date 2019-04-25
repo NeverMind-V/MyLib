@@ -9,8 +9,12 @@
   "author": "nevermind_v",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
     "@fortawesome/fontawesome-free": "^5.8.1",
+    "babelify": "^10.0.0",
     "browser-sync": "^2.26.3",
+    "browserify": "^16.2.3",
     "eslint": "^5.15.3",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
@@ -20,6 +24,8 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify-es": "^1.0.4",
     "gulp-watch": "^5.0.1",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
   }
 }
