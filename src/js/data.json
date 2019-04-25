@@ -4,7 +4,7 @@
       "type": "music",
       "name": "Linkin Park -Lost in the echo",
       "url": "upload/audio/1/Lost_In_The_Echo_Official_Video_-_Linkin_Park.mp3",
-      "thumbnail": "",
+      "thumbnail": "upload/audio/1/thumbnail.png",
       "author": "unknown",
       "description": "description 1"
     },
@@ -22,16 +22,16 @@
       "type": "file-alt",
       "name": "Lorem Title",
       "url": "url 3",
-      "thumbnail": "",
+      "thumbnail": "upload/text/1/thumbnail.jpg",
       "author": "unknown",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
     },
     {
       "id": "4",
       "type": "music",
-      "name": "Aname 4",
-      "url": "url 4",
-      "thumbnail": "",
+      "name": "Linkin Park - In The End",
+      "url": "upload/audio/2/Numb-Linkin_Park.mp3",
+      "thumbnail": "upload/audio/2/thumbnail.jpg",
       "author": "author 4",
       "description": "description 4"
     },

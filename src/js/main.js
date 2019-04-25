@@ -72,6 +72,7 @@ function showAll(data) {
             let link = document.createElement('a');
             link.className = 'main__link';
             link.href = '#';
+            link.href = `material-item.html?id=${value.id}`;
             link.innerHTML = `<i class="fas fa-${value.type} icon"></i>${value.name}`;
             linkBlock.append(link);
         });
@@ -157,6 +158,7 @@ function showCategory(data) {
     let sortData = (data) => { 
         let sortData;   
         let sortContainer = document.querySelector('.js-sort');
+        let filterInput = document.querySelectorAll('.js-filter-input');
         if(!sortContainer) return;
         let nameSortAsc = (a,b) => {
             if(a.name > b.name) {
@@ -183,7 +185,7 @@ function showCategory(data) {
             return a.id - b.id;
         };
         sortContainer.addEventListener('click', function(e) {                  
-            if(e.target.classList.contains('js-asc')) {
+            if(e.target.classList.contains('js-asc')) {                
                 sortData = data.sort(nameSortAsc);
             }
             if(e.target.classList.contains('js-desc')) {
