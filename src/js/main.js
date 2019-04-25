@@ -559,10 +559,32 @@ function contactMenuHandler() {
     });
 }
 
+function galleryDialogHandler() {
+    let url = window.location.href;
+    let dialog = document.querySelector('.js-gallery-dialog');
+    if(url.indexOf('gallery.html') === -1) return;
+    document.addEventListener('click',function(e) {
+        if(e.target.classList.contains('js-gallery-img')) {
+            let src = e.target.src;
+            dialog.querySelector('.gallery__dialog-thumb').src = src;
+            dialog.querySelector('.gallery__dialog').classList.add('zoomIn');
+            dialog.classList.add('active');
+        } else if(e.target.classList.contains('js-gallery-dialog') || e.target.classList.contains('js-gallery-close')) {
+            dialog.querySelector('.gallery__dialog').classList.remove('zoomIn');
+            dialog.querySelector('.gallery__dialog').classList.add('zoomOut');
+            setTimeout(function() {
+                dialog.querySelector('.gallery__dialog').classList.remove('zoomOut');
+                dialog.classList.remove('active');
+            },400);
+        }      
+    });
+}
+
 window.addEventListener('load', function() {
     getRequest('http://5c9915184236560014393204.mockapi.io/mylib/files');
     sliderInit();
     menuBtnToggle();
     addCategoryItem();
     contactMenuHandler();
+    galleryDialogHandler();
 });

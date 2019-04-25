@@ -11,4 +11,15 @@
         height:auto;
         display:block;
     }
+    &__dialog {
+        @extend %dialog;
+        &-wrapper {
+            @extend %dialog-wrapper;
+        }
+        &-thumb {
+            max-width:100%;
+            height:auto;
+            display:block;
+        }
+    }
 }
