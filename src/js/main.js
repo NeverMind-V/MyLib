@@ -1,3 +1,5 @@
+import data from '../js/data.json';
+
 function getRequest(url) {
     fetch(url)
     .then((res) => {
@@ -16,6 +18,10 @@ function getRequest(url) {
     .catch(function(err) {
         console.log('Fetch Error :-S', err);
     });
+}
+function storeData() {
+    localStorage.setItem('data',JSON.stringify(data));
+    console.log('asdasd',JSON.parse(localStorage.data));
 }
 
 function showAll(data) {
@@ -135,14 +141,14 @@ function showCategory(data) {
             let image = document.createElement('img');
             image.src = `${item.thumbnail == 0 ? `../img/${item.type}-thumb.png` : item.thumbnail}`;       
             image.className = 'category__thumb';
-            let a = document.createElement('a');
-            a.innerHTML = `${item.author}`;
-            a.className = 'category__author';
+            // let a = document.createElement('a');
+            // a.innerHTML = `${item.author}`;
+            // a.className = 'category__author';
             let text = document.createElement('p');
             text.innerHTML = `${item.name}`;
             text.className = 'category__name';
             block.appendChild(image);
-            block.appendChild(a);
+            // block.appendChild(a);
             block.appendChild(text);
             category.appendChild(block);
         });
@@ -295,7 +301,7 @@ function showPage(data) {
                     </div>
                     <div class="material__block">
                         <h1 class="material__title">${currentData.name}</h1>
-                        <p class="material__desription">${currentData.text}</p>
+                        <p class="material__desription">${currentData.description}</p>
                     </div>
                 </section>`;
                 break;
@@ -581,7 +587,11 @@ function galleryDialogHandler() {
 }
 
 window.addEventListener('load', function() {
-    getRequest('http://5c9915184236560014393204.mockapi.io/mylib/files');
+    // getRequest('http://5c9915184236560014393204.mockapi.io/mylib/files');
+    storeData();
+    showAll(JSON.parse(localStorage.data));            
+    showCategory(JSON.parse(localStorage.data));
+    showPage(JSON.parse(localStorage.data));   
     sliderInit();
     menuBtnToggle();
     addCategoryItem();

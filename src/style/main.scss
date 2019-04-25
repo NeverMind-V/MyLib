@@ -217,6 +217,10 @@
             top:0;
             right:0;
             background:rgba($blue,0.3);
+            transition:$main_animation;
+            &:hover {
+                background:rgba($blue,0.5);
+            }
         }    
     }   
 }
