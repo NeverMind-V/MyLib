@@ -35,24 +35,19 @@
                         </div>
                     </div>
                     <div class="contacts__block">
-                        <h3 class="contacts__header">Форма связи</h3>
-                                                    
-                            <form action="" id="feedback-form" class="contacts__form">
-                                <p class="contacts__alert js-form-alert">Error</p>
-                                <label for="feedback-name" class="contacts__label--required">Имя</label>
-                                <input type="text" id="feedback-name" name="user__name" class="contacts__input js-contact-name">
-                                <label for="feedback-email" class="contacts__label--required">Email</label>
-                                <input type="text" id="feedback-email" name="user__email" class="contacts__input js-contact-email">
-                                <label for="feedback-phone" class="contacts__label">Телефон</label>
-                                <input type="text" id="feedback-phone" name="user__phone" class="contacts__input js-contact-phone">
-                                <label for="feedback-message" class="contacts__label--required">Ваше сообщение</label>
-                                <textarea name="message" id="feedback-message" cols="30" rows="10" class="contacts__textarea js-contact-textarea"></textarea>
-                                <input type="submit" class="contacts__submit js-contact-submit" value="Отправить">
-                            </form>
-                            <!-- <p class="contacts__text--short">Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                                Ipsum alias eos, excepturi architecto aliquid vel corrupti pariatur minima illo soluta.
-                            </p> -->
-                                               
+                        <h3 class="contacts__header">Форма связи</h3>                                                    
+                        <form action="" id="feedback-form" class="contacts__form">
+                            <p class="contacts__alert js-form-alert"></p>
+                            <label for="feedback-name" class="contacts__label--required">Имя</label>
+                            <input type="text" id="feedback-name" name="user__name" placeholder="John Doe" class="contacts__input js-contact-name" >
+                            <label for="feedback-email" class="contacts__label--required">Email</label>
+                            <input type="text" id="feedback-email" name="user__email" placeholder="test@mail.com" class="contacts__input js-contact-email" >
+                            <label for="feedback-phone" class="contacts__label">Телефон</label>
+                            <input type="text" id="feedback-phone" name="user__phone" class="contacts__input js-contact-phone" >
+                            <label for="feedback-message" class="contacts__label--required">Ваше сообщение</label>
+                            <textarea name="user__message" id="feedback-message" class="contacts__textarea js-contact-textarea"></textarea>
+                            <input type="submit" class="contacts__submit js-contact-submit" value="Отправить">
+                        </form>                                               
                     </div>
                 </div>                
             </div>            

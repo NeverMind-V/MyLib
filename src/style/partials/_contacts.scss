@@ -65,18 +65,22 @@
         background:$red;
         color:$white;
         margin:20px 0;
+        &.active {
+            display:block;
+        }
     }
     &__input {
         @extend %input;
         display:block;  
         width:50%;
         height:40px;  
-        margin-bottom:15px;    
+        margin-bottom:15px; 
     }
     &__textarea {
         @extend %input;
         display:block;
         width:100%;
+        min-height:200px;
         padding:10px;
         margin-bottom:15px;
     }
