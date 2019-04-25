@@ -501,6 +501,7 @@ function contactMenuHandler() {
     let message = document.querySelector('.js-contact-textarea');
     let error = document.querySelector('.js-form-alert');
     let arr = [name,email,message];
+    if(window.location.href.indexOf('contacts.html') === -1) return;
     form.addEventListener('submit',function(e) {
         e.preventDefault();
         error.innerHTML = '';
