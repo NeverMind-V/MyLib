@@ -396,7 +396,7 @@ function pagination() {
         output = rangeWithDots.map((item) => {
             let unit = `
             <li class="pagination__item js-pagination-item">
-            ${ item == c 
+            ${ item == c
                 ? `<span class="pagination__link active">${item}</span>`
                 : `<a href="#" class="pagination__link">${item}</a>`
             }
@@ -415,6 +415,7 @@ function pagination() {
         } else if(e.target.parentNode.classList.contains('js-pagination-next')) {
             page = page === pagesAmount ? pagesAmount : page + 1;
         } else if(e.target.parentNode.classList.contains('js-pagination-item')) {
+            if(e.target.innerHTML === '...') return;
             page = parseInt(e.target.innerHTML);
         }
         clean();
