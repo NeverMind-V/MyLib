@@ -214,12 +214,18 @@
         height:40px; 
         &--bg {
             @extend .cross__wrapper;
-            top:0;
-            right:0;
-            background:rgba($blue,0.3);
+            top:auto;
+            bottom:calc(100% + 1px);
+            right: -1px;
+            background:rgba($blue,0.8);
             transition:$main_animation;
             &:hover {
-                background:rgba($blue,0.5);
+                background:rgba($blue,1);
+            }
+            .cross {
+                &:before,&:after {
+                    background:rgba($white,0.7);
+                }
             }
         }    
     }   
