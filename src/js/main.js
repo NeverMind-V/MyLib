@@ -1,5 +1,6 @@
 import data from '../js/data.json';
 import {sliderInit, menuBtnToggle} from '../js/view/mainPage';
+import contactMenuHandler from '../js/view/contactsForm';
 
 function getRequest(url) {
     fetch(url)
@@ -444,71 +445,6 @@ function addCategoryItem() {
                 dialog.classList.remove('active');
             },400);
         }      
-    });
-}
-
-function contactMenuHandler() {
-    let form = document.getElementById('feedback-form');
-    let name = document.querySelector('.js-contact-name');
-    let email = document.querySelector('.js-contact-email');
-    let message = document.querySelector('.js-contact-textarea');
-    let error = document.querySelector('.js-form-alert');
-    let arr = [name,email,message];
-    if(window.location.href.indexOf('contacts.html') === -1) return;
-    form.addEventListener('submit',function(e) {
-        e.preventDefault();
-        error.innerHTML = '';
-        arr.forEach(item => {
-            switch (item.name) {
-                case 'user__name':
-                    if(item.value.length < 2) {
-                        error.classList.add('active');
-                        item.classList.add('warning');
-                        error.innerHTML = `${error.innerHTML} Имя должно быть больше двух символов.</br>`; 
-                        return;                       
-                    } else {
-                        error.classList.remove('active');
-                        item.classList.remove('warning');
-                    }                    
-                    break;
-                case 'user__email':
-                    if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(item.value))) {
-                        error.classList.add('active');
-                        item.classList.add('warning');
-                        error.innerHTML = `${error.innerHTML} Почта введена некорректно.</br>`;   
-                        return;                     
-                    } else {
-                        error.classList.remove('active');
-                        item.classList.remove('warning');
-                    }
-                    break;
-                case 'user__phone':
-                    if(item.value.length < 2) {
-                        error.classList.add('active');
-                        item.classList.add('warning');
-                        error.innerHTML = `${error.innerHTML} Неправильный ввод номера телефона.</br>`; 
-                        return;                       
-                    } else {
-                        error.classList.remove('active');
-                        item.classList.remove('warning');
-                    }
-                    break;
-                case 'user__message':
-                    if(item.value.length < 10) {
-                        error.classList.add('active');
-                        item.classList.add('warning');
-                        error.innerHTML = `${error.innerHTML} Сообщение должно быть больше 10 символов.</br>`;   
-                        return;                     
-                    } else {
-                        error.classList.remove('active');
-                        item.classList.remove('warning');
-                    }
-                    break;                    
-            }
-        });
-        if(!error.innerHTML) {
-            form.submit();
-        }    
     });
 }
 
