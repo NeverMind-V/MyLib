@@ -1,4 +1,5 @@
 function contactsIframeHandler() {
+    if(window.location.href.indexOf('contacts.html') === -1) return;
     let iframe = document.querySelector('#map iframe');
     if(navigator.onLine) {
         iframe.style.display = 'block';
