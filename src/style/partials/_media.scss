@@ -159,12 +159,20 @@
                 padding-left:0;
             }
         }
+        
     }
 }
 @media screen and (min-width:579px) and (max-width: 768px) {
     .main {
         &__link {
             width:calc(50% - 30px);
+        }
+    }
+    .authors {
+        &-list {
+            &__item {
+                width:calc(50% - 30px);
+            }
         }
     }
 }
@@ -191,6 +199,18 @@
         &__filter-container {
             flex-direction:column;
         }
+        &__btn {
+            width:100%;
+        }
+        &__dialog {
+            height:100vh;
+            overflow-y:scroll;
+            padding-top:30px;
+            &-wrapper {
+                height:100%;
+                align-items:flex-start;
+            }
+        }
     }
     .gallery {
         &__item {
@@ -200,6 +220,13 @@
     .contacts {
         &__input {
             width:100%;
+        }
+    }
+    .authors {
+        &-list {
+            &__item {
+                width:calc(100% - 30px);
+            }
         }
     }
 }

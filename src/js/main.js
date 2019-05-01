@@ -1,6 +1,8 @@
 import data from '../js/data.json';
+import authors from '../js/author.json';
 import {sliderInit, menuBtnToggle} from '../js/view/mainPage';
 import contactMenuHandler from '../js/view/contactsForm';
+import authorsListInit from '../js/view/authors';
 
 function getRequest(url) {
     fetch(url)
@@ -23,7 +25,8 @@ function getRequest(url) {
 }
 function storeData() {
     localStorage.setItem('data',JSON.stringify(data));
-    console.log('asdasd',JSON.parse(localStorage.data));
+    localStorage.setItem('authors',JSON.stringify(authors));
+    console.log('asdasd',JSON.parse(localStorage.data),JSON.parse(localStorage.authors));
 }
 
 function showAll(data) {
@@ -427,25 +430,162 @@ function pagination() {
     paginationInit(page, pagesAmount); 
 }
 
+function addMaterial(input) {
+    let newData = JSON.parse(localStorage.getItem('data'));
+    console.log('new',newData,id);    
+    let id = newData[newData.length - 1].id;
+    let obj = {};
+    obj.id = +id + 1 + '';
+    input.forEach( item => {
+
+        if(item.id == 'modalThumbnail') {
+            obj.thumbnail = item.value;
+        } else {
+            obj.url = item.value;
+        }
+
+        switch (item.name) {
+            case 'userCategory':
+                obj.type = item.checked && item.id == 'modalText' ? 'file-alt' : item.id == 'modalAudio' ? 'music' : 'video';
+                break;
+            case 'userName':
+                obj.author = item.value;
+                break;
+            case 'userDescription':
+                obj.description = item.value;                
+                break;
+            case 'userTitle':
+                obj.name = item.value;
+                break;
+        }
+
+    });
+    console.log(obj);
+    // newData.push(obj);
+    // localStorage.setItem('data',JSON.stringify(newData));
+    // console.log('new',newData,id,JSON.parse(localStorage.data));    
+}
+
 
 
 function addCategoryItem() {
     let url = window.location.href;
-    let dialog = document.querySelector('.js-category-add-dialog');
-    if(url.indexOf('category.html') === -1) return;
+    let dialog = document.querySelector('.js-category-add-dialog'); 
+    let input;
+    let form;   
+    let radio;
+    let chosenCategory;
+    let name,path,thumbnail,author,description;
+    let error = {
+        userName: {
+            message:'Имя должно быть больше двух символов.',
+            regexp: /.{3,}/
+        },
+        userPhone: {
+            message: 'Неправильный ввод номера телефона.',
+            regexp: /[0-9]{7,}/
+        },
+        userEmail: {
+            message: 'Почта введена некорректно.',
+            regexp: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+        },
+        userMessage: {
+            message: 'Сообщение должно быть больше 10 символов.',
+            regexp: /.{10,}/
+        },
+        userFile: {
+            messageEmpty: 'Файл не выбран.',
+            messageFormat: 'Формат файла не поддерживается.',
+            modalThumbnail: ['jpg','jpeg','gif','png'],
+            modalAudio: ['mp3','ogg','wav'],
+            modalVideo: ['mp4','webm','ogg'],
+            state: false
+        },
+        userTitle: {
+            message: 'Название должно быть больше двух символов.',
+            regexp: /.{3,}/
+        },
+        userDescription: {
+            message: 'Описание должно быть больше 10 символов.',
+            regexp: /.{10,}/
+        },
+        errorState: 0,
+        validation: function(item) {            
+            if(item.name === 'userCategory') {
+                if(item.checked) {
+                    chosenCategory = item.id;              
+                }
+                return;
+            }            
+            if(item.name === 'userFile') {
+                if(item.files.length == 0) {
+                    item.nextElementSibling.classList.add('active');
+                    item.nextElementSibling.innerHTML = error[item.name].messageEmpty;                     
+                } else {
+                    console.log('qq',item.files[0],item.value); 
+                    item.nextElementSibling.innerHTML = '';   
+                    item.nextElementSibling.classList.remove('active');                    
+                }
+            } else {
+                if(!error[item.name].regexp.test(item.value)) {                    
+                    item.classList.add('warning');
+                    item.nextElementSibling.classList.add('active');
+                    item.nextElementSibling.innerHTML = error[item.name].message;
+                    return;                       
+                } else {
+                    item.classList.remove('warning');
+                    item.nextElementSibling.innerHTML = '';
+                    item.nextElementSibling.classList.remove('active');                    
+                    error.errorState++;
+                }
+            }            
+        }
+    }; 
+    if(url.indexOf('category.html') === -1) return;      
     document.addEventListener('click',function(e) {
         if(e.target.classList.contains('js-category-add-btn')) {
             dialog.querySelector('.category__dialog').classList.add('zoomIn');
             dialog.classList.add('active');
+            document.querySelector('body').classList.add('modal');
+            console.log(document.querySelector('.js-category-file'));
+            document.querySelector('.js-category-file').style.display = 'none';
+            input = document.querySelectorAll('.js-category-input');
+            radio = document.querySelectorAll('.js-category-input[type="radio"]');
+            form = document.getElementById('category-add-form');
+            console.log('sss',typeof input);
+            radio.forEach(item => {
+                item.addEventListener('change',function() {
+                    if(this.checked && this.id == 'modalText') {
+                        document.querySelector('.js-category-file').style.display = 'none';
+                    } else {
+                        document.querySelector('.js-category-file').style.display = 'block';
+                    }
+                });
+            });
+            form.addEventListener('submit',function(e) {
+                e.preventDefault();
+                let material;
+                error.errorState = 0;
+                input.forEach(item => {
+                    error.validation(item);            
+                });
+                console.log('s',error.errorState, input.length);
+                if(error.errorState == input.length) {
+                    addMaterial(input);
+                    form.submit();
+                }    
+            }); 
         } else if(e.target.classList.contains('js-category-add-dialog') || e.target.classList.contains('js-category-close')) {
             dialog.querySelector('.category__dialog').classList.remove('zoomIn');
             dialog.querySelector('.category__dialog').classList.add('zoomOut');
             setTimeout(function() {
                 dialog.querySelector('.category__dialog').classList.remove('zoomOut');
                 dialog.classList.remove('active');
+                document.querySelector('body').classList.remove('modal');
             },400);
-        }      
-    });
+        }          
+    });    
+        
 }
 
 function galleryDialogHandler() {
@@ -480,4 +620,5 @@ window.addEventListener('load', function() {
     addCategoryItem();
     contactMenuHandler();
     galleryDialogHandler();
+    authorsListInit();
 });

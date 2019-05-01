@@ -10,9 +10,9 @@
     "partials/typography",
     "partials/slider",
     "partials/contacts",
-    "partials/category",
     "partials/material",
-    "partials/gallery";
+    "partials/gallery",
+    "partials/authors";
     
 
 * {
@@ -264,6 +264,12 @@
     }
 }
 
+.modal {
+    overflow:hidden;
+}
+.hide {
+    display:none;
+}
 
-
-@import "partials/media";
+@import "partials/category",
+    "partials/media";

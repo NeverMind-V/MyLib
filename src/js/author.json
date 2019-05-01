@@ -1,0 +1,32 @@
+[
+    {
+      "id": "1",
+      "name": "Tim Cook",
+      "email": "email1@gmail.com",
+      "thumbnail": "../upload/authors/timcook.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Marko Reus",
+      "email": "email2@gmail.com",
+      "thumbnail": "../upload/authors/marcoreus.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Bill Gates",
+      "email": "email3@gmail.com",
+      "thumbnail": "../upload/authors/gates.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Stephen Curry",
+      "email": "email4@gmail.com",
+      "thumbnail": "../upload/authors/stephcurry.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Robert Downey Jr",
+      "email": "email5@gmail.com",
+      "thumbnail": "../upload/authors/robertdowneyjr.jpg"
+    }
+]
