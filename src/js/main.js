@@ -6,6 +6,7 @@ import authorsListInit from './view/authorsList';
 import authorsInit from './view/authors';
 import authorsPostsInit from './view/authorsPosts';
 import addBlock from './view/addBlock';
+import contactsIframeHandler from './view/contactsIframe';
 
 
 function getRequest(url) {
@@ -627,4 +628,5 @@ window.addEventListener('load', function() {
     authorsListInit();
     authorsInit();
     authorsPostsInit();
+    contactsIframeHandler();
 });

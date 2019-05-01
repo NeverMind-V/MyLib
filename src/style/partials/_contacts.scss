@@ -38,6 +38,9 @@
         }
     }
     &__map {
+        background:url('../../img/map.jpg') center center no-repeat;
+        width:100%;
+        min-height:400px;
         iframe {
             width:100%;
             height:400px;
@@ -59,11 +62,8 @@
         }
     }
     &__alert {
-        display:none;
-        @include font-size(16px);
-        color:$red;
-        margin:10px 0;
-        &.active {
+        @extend %alert;
+        &.active {            
             display:block;
         }
     }
