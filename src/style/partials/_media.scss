@@ -1,3 +1,10 @@
+@media screen and (max-width: 1024px) {
+    .authors {
+        &__thumb-block,&__desc {
+            width:calc(100% - 30px);
+        }
+    }
+}
 @media screen and (max-width: 768px) {
     .menu {
         &__btn {
@@ -160,7 +167,7 @@
             }
         }
         
-    }
+    }    
 }
 @media screen and (min-width:579px) and (max-width: 768px) {
     .main {
@@ -173,6 +180,11 @@
             &__item {
                 width:calc(50% - 30px);
             }
+        }        
+    }
+    .posts {
+        &__item {
+            width:calc(50% - 20px);
         }
     }
 }
@@ -227,6 +239,14 @@
             &__item {
                 width:calc(100% - 30px);
             }
+        }
+        .main__header {
+            text-align:left;
+        }
+    }
+    .posts {
+        &__item {
+            width:calc(100% - 20px);
         }
     }
 }

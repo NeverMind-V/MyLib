@@ -1,8 +1,12 @@
 import data from '../js/data.json';
 import authors from '../js/author.json';
-import {sliderInit, menuBtnToggle} from '../js/view/mainPage';
-import contactMenuHandler from '../js/view/contactsForm';
-import authorsListInit from '../js/view/authors';
+import {sliderInit, menuBtnToggle} from './view/mainPage';
+import contactMenuHandler from './view/contactsForm';
+import authorsListInit from './view/authorsList';
+import authorsInit from './view/authors';
+import authorsPostsInit from './view/authorsPosts';
+import addBlock from './view/addBlock';
+
 
 function getRequest(url) {
     fetch(url)
@@ -136,29 +140,29 @@ function showCategory(data) {
         
     };
     
-    let addBlock = (data) => {
-        category.innerHTML = '';
-        data.forEach((item) => {
-            let block = document.createElement('a');
-            block.href = `material-item.html?id=${item.id}`; 
-            block.target = '_blank'; 
-            block.className = 'category__item js-category-item';  
-            block.id = `${item.id}`;        
-            let image = document.createElement('img');
-            image.src = `${item.thumbnail == 0 ? `../img/${item.type}-thumb.png` : item.thumbnail}`;       
-            image.className = 'category__thumb';
-            // let a = document.createElement('a');
-            // a.innerHTML = `${item.author}`;
-            // a.className = 'category__author';
-            let text = document.createElement('p');
-            text.innerHTML = `${item.name}`;
-            text.className = 'category__name';
-            block.appendChild(image);
-            // block.appendChild(a);
-            block.appendChild(text);
-            category.appendChild(block);
-        });
-    };
+    // let addBlock = (data,container) => {
+    //     container.innerHTML = '';
+    //     data.forEach((item) => {
+    //         let block = document.createElement('a');
+    //         block.href = `material-item.html?id=${item.id}`; 
+    //         block.target = '_blank'; 
+    //         block.className = 'category__item js-category-item';  
+    //         block.id = `${item.id}`;        
+    //         let image = document.createElement('img');
+    //         image.src = `${item.thumbnail == 0 ? `../img/${item.type}-thumb.png` : item.thumbnail}`;       
+    //         image.className = 'category__thumb';
+    //         // let a = document.createElement('a');
+    //         // a.innerHTML = `${item.author}`;
+    //         // a.className = 'category__author';
+    //         let text = document.createElement('p');
+    //         text.innerHTML = `${item.name}`;
+    //         text.className = 'category__name';
+    //         block.appendChild(image);
+    //         // block.appendChild(a);
+    //         block.appendChild(text);
+    //         container.appendChild(block);
+    //     });
+    // };
 
     let sortData = (data) => { 
         let sortData;   
@@ -203,7 +207,7 @@ function showCategory(data) {
                 sortData = data.sort(nameSortOldFirst);
             }
             sortData = sortData == undefined ? data : sortData;
-            addBlock(sortData);
+            addBlock(sortData,category);
             pagination();
         });        
     }
@@ -239,7 +243,7 @@ function showCategory(data) {
                     return state;
                 });
                 filterData = filterData.length ? filterData : data;
-                addBlock(filterData);
+                addBlock(filterData,category);
                 pagination();               
             });      
         }); 
@@ -254,7 +258,7 @@ function showCategory(data) {
         });
         console.log('filterdata',filterData);
         filterData = filterData.length ? filterData : data;
-        addBlock(filterData);
+        addBlock(filterData,category);
         pagination(); 
         return filterData; 
     };
@@ -279,10 +283,10 @@ function showCategory(data) {
                 }
             });
             console.log('filterData44',filterData);
-            addBlock(filterData);
+            addBlock(filterData,category);
             pagination(); 
         });  
-        addBlock(filter);      
+        addBlock(filter,category);      
     };     
     addFilter(data);
     filterSearch(filterHandler(data),data);
@@ -621,4 +625,6 @@ window.addEventListener('load', function() {
     contactMenuHandler();
     galleryDialogHandler();
     authorsListInit();
+    authorsInit();
+    authorsPostsInit();
 });
