@@ -135,9 +135,9 @@
         align-self:flex-start;
     }
     &__dialog {  
-        @extend %dialog; 
+        @extend %dialog;        
         &-wrapper {
-            @extend %dialog-wrapper;
+            @extend %dialog-wrapper;            
         }
     }
     &__header {
@@ -156,11 +156,27 @@
     }
     &__submit {
         @extend %btn;
+        width:100%;
         color:$white;
     }
     &__input {
         @extend %input;
         height:40px;
+        width:100%;
         margin-bottom:10px;
+        &--radio {
+            @extend %input;
+        }
     }
+    &__alert {
+        @extend %alert;
+        &.active {            
+            display:block;
+        }
+    }
+
+    &__row {
+        display:flex;
+        flex-wrap:wrap;
+    }    
 }

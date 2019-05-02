@@ -47,15 +47,48 @@
                 </section>  
                 <div class="category__dialog-wrapper js-category-add-dialog">
                     <div class="category__dialog">
+                        <form action="" id="category-add-form">
                             <div class="cross__wrapper"><span class="cross js-category-close"></span></div>
                             <h3 class="category__header">Добавить материал</h3>
                             <label for="" class="category__label--required">Имя</label>
-                            <input type="text" class="category__input">
+                            <input type="text" name="userName" class="category__input js-category-input">
+                            <p class="category__alert js-form-alert"></p>
                             <label for="" class="category__label--required">Email</label>
-                            <input type="text" class="category__input">
+                            <input type="text" name="userEmail" class="category__input js-category-input">
+                            <p class="category__alert js-form-alert"></p>
                             <label for="" class="category__label--required">Тип материала</label>
-                            <input type="file" class="category__file">                          
-                            <input type="submit" class="category__submit" value="Добавить">                      
+                            <div class="category__row">
+                                <div class="category__filter-block">
+                                    <input class="category__filter-input js-category-radio" name="userCategory" type="radio" id="modalText" checked>
+                                    <label class="category__filter-label" for="modalText"></label>
+                                    <span class="category__filter-name">Текст</span>
+                                </div>
+                                <div class="category__filter-block">
+                                    <input class="category__filter-input js-category-radio" name="userCategory" type="radio" id="modalAudio">
+                                    <label class="category__filter-label" for="modalAudio"></label>
+                                    <span class="category__filter-name">Аудио</span>
+                                </div>
+                                <div class="category__filter-block">
+                                    <input class="category__filter-input js-category-radio" name="userCategory" type="radio" id="modalVideo">
+                                    <label class="category__filter-label" for="modalVideo"></label>
+                                    <span class="category__filter-name">Видео</span>
+                                </div>
+                            </div>
+                            <p class="category__alert js-form-alert"></p>
+                            <label for="" class="category__label--required">Название</label>
+                            <input type="text" name="userTitle" class="category__input js-category-input">
+                            <p class="category__alert js-form-alert"></p>
+                            <label for="" class="category__label--required">Описание</label>
+                            <input type="text" name="userDescription" class="category__input js-category-input">
+                            <p class="category__alert js-form-alert"></p>
+                            <label for="" class="category__label--required">Обложка</label>
+                            <input type="file" name="userFile" id="modalThumbnail" class="category__file js-category-input">
+                            <p class="category__alert js-form-alert"></p>
+                            <label for="" class="category__label--required">Файл</label>
+                            <input type="file" name="userFile" id="modalFile" class="category__file js-category-input" disabled>
+                            <p class="category__alert js-form-alert"></p>                                                        
+                            <input type="submit" class="category__submit" value="Добавить">
+                        </form>                        
                     </div>
                 </div>                
             </div>            
