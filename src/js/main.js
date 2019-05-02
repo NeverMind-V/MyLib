@@ -7,6 +7,7 @@ import authorsInit from './view/authors';
 import authorsPostsInit from './view/authorsPosts';
 import addBlock from './view/addBlock';
 import contactsIframeHandler from './view/contactsIframe';
+import pagination from './view/pagination';
 
 
 function getRequest(url) {
@@ -94,6 +95,8 @@ function showAll(data) {
 function showCategory(data) {
     let category = document.querySelector('.js-category');
     if(!category) return;
+    let categoryItems;  
+    console.log('categoryItems',categoryItems);
     let addFilter = (data) => {
         let set = new Set();
         let container = document.querySelector('.js-filter-container');
@@ -140,35 +143,12 @@ function showCategory(data) {
         });
         
     };
-    
-    // let addBlock = (data,container) => {
-    //     container.innerHTML = '';
-    //     data.forEach((item) => {
-    //         let block = document.createElement('a');
-    //         block.href = `material-item.html?id=${item.id}`; 
-    //         block.target = '_blank'; 
-    //         block.className = 'category__item js-category-item';  
-    //         block.id = `${item.id}`;        
-    //         let image = document.createElement('img');
-    //         image.src = `${item.thumbnail == 0 ? `../img/${item.type}-thumb.png` : item.thumbnail}`;       
-    //         image.className = 'category__thumb';
-    //         // let a = document.createElement('a');
-    //         // a.innerHTML = `${item.author}`;
-    //         // a.className = 'category__author';
-    //         let text = document.createElement('p');
-    //         text.innerHTML = `${item.name}`;
-    //         text.className = 'category__name';
-    //         block.appendChild(image);
-    //         // block.appendChild(a);
-    //         block.appendChild(text);
-    //         container.appendChild(block);
-    //     });
-    // };
 
     let sortData = (data) => { 
         let sortData;   
         let sortContainer = document.querySelector('.js-sort');
         let filterInput = document.querySelectorAll('.js-filter-input');
+        categoryItems = document.querySelectorAll('.js-category-item');
         if(!sortContainer) return;
         let nameSortAsc = (a,b) => {
             if(a.name > b.name) {
@@ -209,7 +189,7 @@ function showCategory(data) {
             }
             sortData = sortData == undefined ? data : sortData;
             addBlock(sortData,category);
-            pagination();
+            pagination(categoryItems);
         });        
     }
 
@@ -219,7 +199,7 @@ function showCategory(data) {
         console.log('filter1',filter,url.get('filter'));
         let filterData;
         let input = document.querySelectorAll('.js-filter-input');
-
+        categoryItems = document.querySelectorAll('.js-category-item');
         input.forEach(item => {
             if(item.id == url.get('filter')) {
                 item.checked = true;                  
@@ -245,7 +225,7 @@ function showCategory(data) {
                 });
                 filterData = filterData.length ? filterData : data;
                 addBlock(filterData,category);
-                pagination();               
+                pagination(categoryItems);               
             });      
         }); 
         filterData = data.filter(item => {
@@ -260,7 +240,7 @@ function showCategory(data) {
         console.log('filterdata',filterData);
         filterData = filterData.length ? filterData : data;
         addBlock(filterData,category);
-        pagination(); 
+        pagination(categoryItems); 
         return filterData; 
     };
 
@@ -270,6 +250,7 @@ function showCategory(data) {
         let filterInput = document.querySelectorAll('.js-filter-input');
         let query;
         let filterData;
+        categoryItems = document.querySelectorAll('.js-category-item');
         console.log('filter',filter,data);
         form.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -285,14 +266,14 @@ function showCategory(data) {
             });
             console.log('filterData44',filterData);
             addBlock(filterData,category);
-            pagination(); 
+            pagination(categoryItems); 
         });  
         addBlock(filter,category);      
     };     
     addFilter(data);
     filterSearch(filterHandler(data),data);
     sortData(data);
-    pagination(); 
+    pagination(categoryItems); 
 }
 
 function showPage(data) {     
@@ -348,91 +329,6 @@ function showPage(data) {
                 break;            
         }
     }
-}
-
-function pagination() {
-    let page = 1;
-    let blockAmount = 6;
-    let items = document.querySelectorAll('.js-category-item');  
-    let container = document.querySelector('.js-pagination');
-    let pagesAmount = Math.ceil(items.length / blockAmount,0);
-    let clean = () => {
-        items.forEach((item) => {
-            item.style.display = 'none';
-        });
-        for(let i = 0; i < blockAmount; i++) {
-            if( i + (page - 1) * blockAmount < items.length) items[i + (page - 1) * blockAmount].style.display = 'flex';
-        }
-    }      
-    let prev = `
-    <li class="pagination__item js-pagination-prev">
-        <a href="#" class="pagination__link--prev"></a>
-    </li>`;
-    let next = `
-    <li class="pagination__item js-pagination-next">
-        <a href="#" class="pagination__link--next"></a>
-    </li>`;
-    let paginationInit = (c, m) => {
-        let current = c,
-            last = m,
-            delta = 1,
-            left = current - delta,
-            right = current + delta + 1,
-            range = [],
-            rangeWithDots = [],
-            l,
-            output = [];
-
-        container.innerHTML = '';
-        for (let i = 1; i <= last; i++) {
-            if (i == 1 || i == last || i >= left && i < right) {
-                range.push(i);
-            }
-        }
-    
-        for (let i of range) {
-            if (l) {
-                if (i - l === 2) {
-                    rangeWithDots.push(l + 1);
-                } else if (i - l !== 1) {
-                    rangeWithDots.push('...');
-                }
-            }
-            rangeWithDots.push(i);
-            l = i;
-        }
-        
-        output = rangeWithDots.map((item) => {
-            let unit = `
-            <li class="pagination__item js-pagination-item">
-            ${ item == c
-                ? `<span class="pagination__link active">${item}</span>`
-                : `<a href="#" class="pagination__link">${item}</a>`
-            }
-            </li>`;
-            return unit;
-        });
-        output.unshift(prev);
-        output.push(next);
-        output.forEach((item) => {
-            container.insertAdjacentHTML('beforeend',item);
-        });
-    }
-    container.addEventListener('click', function(e) {
-        if(e.target.parentNode.classList.contains('js-pagination-prev')) {
-            page = page === 1 ? 1 : page - 1;
-        } else if(e.target.parentNode.classList.contains('js-pagination-next')) {
-            page = page === pagesAmount ? pagesAmount : page + 1;
-        } else if(e.target.parentNode.classList.contains('js-pagination-item')) {
-            if(e.target.innerHTML === '...') return;
-            page = parseInt(e.target.innerHTML);
-        }
-        clean();
-        paginationInit(page,pagesAmount);
-    });
-
-    clean();   
-    paginationInit(page, pagesAmount); 
 }
 
 function addMaterial(input) {
