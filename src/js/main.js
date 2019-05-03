@@ -342,6 +342,7 @@ function galleryDialogHandler() {
             let src = e.target.src;
             dialog.querySelector('.gallery__dialog-thumb').src = src;
             dialog.querySelector('.gallery__dialog').classList.add('zoomIn');
+            document.querySelector('body').classList.add('modal');
             dialog.classList.add('active');
         } else if(e.target.classList.contains('js-gallery-dialog') || e.target.classList.contains('js-gallery-close')) {
             dialog.querySelector('.gallery__dialog').classList.remove('zoomIn');
@@ -349,6 +350,7 @@ function galleryDialogHandler() {
             setTimeout(function() {
                 dialog.querySelector('.gallery__dialog').classList.remove('zoomOut');
                 dialog.classList.remove('active');
+                document.querySelector('body').classList.remove('modal');
             },400);
         }      
     });
