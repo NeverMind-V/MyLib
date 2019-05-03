@@ -1,7 +1,8 @@
-function pagination(items) {
+function pagination(className) {
     let page = 1;
     let blockAmount = 6;
     let container = document.querySelector('.js-pagination');
+    let items = document.querySelectorAll(className);
     let pagesAmount = Math.ceil(items.length / blockAmount,0);
     let clean = () => {
         items.forEach((item) => {

@@ -4,9 +4,8 @@ function authorsListInit() {
     if(window.location.href.indexOf('authors-list.html') === -1) return;
     let authors = JSON.parse(localStorage.authors);
     let container = document.querySelector('.js-authors-list');
-    let authorsItems;
+    let authorsItemsClass;
     authors.forEach(item => {
-        console.log(item);
         let a = document.createElement('a');
         a.href = `authors.html?id=${item.id}`;
         a.target = '_blank';
@@ -21,8 +20,8 @@ function authorsListInit() {
         a.appendChild(p);
         container.appendChild(a);
     });
-    authorsItems = document.querySelectorAll('.js-author-list-item');
-    pagination(authorsItems);
+    authorsItemsClass = '.js-author-list-item';
+    pagination(authorsItemsClass);
 }
 
 export default authorsListInit;

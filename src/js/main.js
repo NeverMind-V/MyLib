@@ -96,7 +96,7 @@ function showAll(data) {
 function showCategory(data) {
     let category = document.querySelector('.js-category');
     if(!category) return;
-    let categoryItems;  
+    let categoryItemsClass = '.js-category-item';  
     let addFilter = (data) => {
         let set = new Set();
         let container = document.querySelector('.js-filter-container');
@@ -148,7 +148,6 @@ function showCategory(data) {
         let sortData;   
         let sortContainer = document.querySelector('.js-sort');
         let filterInput = document.querySelectorAll('.js-filter-input');
-        categoryItems = document.querySelectorAll('.js-category-item');
         if(!sortContainer) return;
         let nameSortAsc = (a,b) => {
             if(a.name > b.name) {
@@ -188,8 +187,9 @@ function showCategory(data) {
                 sortData = data.sort(nameSortOldFirst);
             }
             sortData = sortData == undefined ? data : sortData;
+            // categoryItems = document.querySelectorAll('.js-category-item');
             addBlock(sortData,category);
-            pagination(categoryItems);
+            pagination(categoryItemsClass);
         });        
     }
 
@@ -199,13 +199,12 @@ function showCategory(data) {
         console.log('filter1',filter,url.get('filter'));
         let filterData;
         let input = document.querySelectorAll('.js-filter-input');
-        categoryItems = document.querySelectorAll('.js-category-item');
+        // categoryItems = document.querySelectorAll('.js-category-item');
         input.forEach(item => {
             if(item.id == url.get('filter')) {
                 item.checked = true;                  
             }
             item.addEventListener('change', function() {
-                console.log(this.checked,this.id);
                 if(this.checked) {
                     filter.push(this.id);
                 } else {
@@ -224,8 +223,9 @@ function showCategory(data) {
                     return state;
                 });
                 filterData = filterData.length ? filterData : data;
+                // categoryItems = document.querySelectorAll('.js-category-item');
                 addBlock(filterData,category);
-                pagination(categoryItems);               
+                pagination(categoryItemsClass);               
             });      
         }); 
         filterData = data.filter(item => {
@@ -240,7 +240,8 @@ function showCategory(data) {
         console.log('filterdata',filterData);
         filterData = filterData.length ? filterData : data;
         addBlock(filterData,category);
-        pagination(categoryItems); 
+        // categoryItems = document.querySelectorAll('.js-category-item');
+        pagination(categoryItemsClass); 
         return filterData; 
     };
 
@@ -250,7 +251,7 @@ function showCategory(data) {
         let filterInput = document.querySelectorAll('.js-filter-input');
         let query;
         let filterData;
-        categoryItems = document.querySelectorAll('.js-category-item');
+        // categoryItems = document.querySelectorAll('.js-category-item');
         console.log('filter',filter,data);
         form.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -266,14 +267,15 @@ function showCategory(data) {
             });
             console.log('filterData44',filterData);
             addBlock(filterData,category);
-            pagination(categoryItems); 
+            pagination(categoryItemsClass); 
         });  
         addBlock(filter,category);      
     };     
     addFilter(data);
     filterSearch(filterHandler(data),data);
     sortData(data);
-    pagination(categoryItems); 
+    // categoryItems = document.querySelectorAll('.js-category-item');
+    pagination(categoryItemsClass); 
 }
 
 function showPage(data) {     

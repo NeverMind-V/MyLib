@@ -7,12 +7,10 @@ function authorsPostsInit() {
     let id = url.get('id');    
     let container = document.querySelector('.js-posts-container');
     let author = JSON.parse(localStorage.data).filter(item => { return item.authorId == id});
-    let postItems;
+    let postItemsClass;
     addBlock(author,container);
-    postItems = document.querySelectorAll('.js-category-item');
-    pagination(postItems);
-    
-    console.log('as',author,id);
+    postItemsClass = '.js-category-item';
+    pagination(postItemsClass);
 }
 
 
