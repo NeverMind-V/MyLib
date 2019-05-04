@@ -7,7 +7,7 @@ function addBlock(data,container) {
         block.className = 'category__item js-category-item';  
         block.id = `${item.id}`;        
         let image = document.createElement('img');
-        image.src = `${item.thumbnail == 0 || item.thumbnail.includes('fakepath') ? `../img/${item.type}-thumb.png` : item.thumbnail}`;       
+        image.src = `${item.thumbnail == 0 ? `../img/${item.type}-thumb.png` : item.thumbnail}`;       
         image.className = 'category__thumb';
         // let a = document.createElement('a');
         // a.innerHTML = `${item.author}`;

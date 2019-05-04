@@ -33,6 +33,7 @@ function storeData() {
     if(localStorage.getItem('data') === null) {
         localStorage.setItem('data',JSON.stringify(data));
         localStorage.setItem('authors',JSON.stringify(authors));
+        localStorage.setItem('storagePath','../upload/');
     }
 }
 

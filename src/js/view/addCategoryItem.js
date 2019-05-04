@@ -6,9 +6,9 @@ function addMaterial(input,chosen) {
     input.forEach( item => {
 
         if(item.id == 'modalThumbnail') {
-            obj.thumbnail = item.value;
-        } else {
-            obj.url = item.value;
+            obj.thumbnail = localStorage.getItem('storagePath') + item.files[0].name;
+        } else if(item.id == 'modalFile' && !item.disabled) {
+            obj.url = localStorage.getItem('storagePath') + item.files[0].name;
         }
 
         obj.type = (chosen == 'modalText') ? 'file-alt' : chosen == 'modalAudio' ? 'music' : 'video';
@@ -128,7 +128,7 @@ function addCategoryItem() {
             dialog.querySelector('.category__dialog').classList.add('zoomIn');
             dialog.classList.add('active');
             document.querySelector('body').classList.add('modal');
-            input = document.querySelectorAll('.js-category-input');
+            input = document.querySelectorAll('.js-category-input.js-required');
             form = document.getElementById('category-add-form');
             radio.forEach(item => {
                 if(item.checked) {
@@ -155,7 +155,6 @@ function addCategoryItem() {
                 input.forEach(item => {
                     error.validation(item);            
                 });
-                console.log('s',error.errorState, input.length,chosenCategory);
                 if(!error.hasError(input)) {
                     addMaterial(input,chosenCategory);
                     form.submit();
