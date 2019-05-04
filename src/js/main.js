@@ -9,6 +9,7 @@ import addBlock from './view/addBlock';
 import contactsIframeHandler from './view/contactsIframe';
 import pagination from './view/pagination';
 import { addCategoryItem, addMaterial } from './view/addCategoryItem';
+import galleryDialogHandler from './view/galleryDialog';
 
 function getRequest(url) {
     fetch(url)
@@ -332,29 +333,6 @@ function showPage(data) {
                 break;            
         }
     }
-}
-
-function galleryDialogHandler() {
-    let url = window.location.href;
-    let dialog = document.querySelector('.js-gallery-dialog');
-    if(url.indexOf('gallery.html') === -1) return;
-    document.addEventListener('click',function(e) {
-        if(e.target.classList.contains('js-gallery-img')) {
-            let src = e.target.src;
-            dialog.querySelector('.gallery__dialog-thumb').src = src;
-            dialog.querySelector('.gallery__dialog').classList.add('zoomIn');
-            document.querySelector('body').classList.add('modal');
-            dialog.classList.add('active');
-        } else if(e.target.classList.contains('js-gallery-dialog') || e.target.classList.contains('js-gallery-close')) {
-            dialog.querySelector('.gallery__dialog').classList.remove('zoomIn');
-            dialog.querySelector('.gallery__dialog').classList.add('zoomOut');
-            setTimeout(function() {
-                dialog.querySelector('.gallery__dialog').classList.remove('zoomOut');
-                dialog.classList.remove('active');
-                document.querySelector('body').classList.remove('modal');
-            },400);
-        }      
-    });
 }
 
 window.addEventListener('load', function() {

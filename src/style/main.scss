@@ -188,6 +188,32 @@
     }
 }
 
+.next,.prev {
+    @include font-size(16px);
+    color:$white;
+    &__wrapper {
+        cursor:pointer;
+        position:absolute;
+        top:50px;
+        background:$blue;
+        padding:5px;
+        transition:$main_animation;
+        
+    }
+}
+.next__wrapper {
+    right:-1px;
+    &:hover {
+        padding-right:15px;
+    }
+}
+.prev__wrapper {
+    left:-1px;
+    &:hover {
+        padding-left:15px;
+    }
+}
+
 .cross {
     display:block;
     position:relative;
@@ -308,5 +334,6 @@
     display:none;
 }
 
-@import "partials/category",
+@import "partials/gallery",
+    "partials/category",
     "partials/media";
