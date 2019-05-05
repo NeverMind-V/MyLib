@@ -175,7 +175,10 @@ function showCategory(data) {
         let nameSortOldFirst = (a,b) => {
             return a.id - b.id;
         };
-        sortContainer.addEventListener('click', function(e) {                  
+        sortContainer.addEventListener('click', function(e) { 
+            filterInput.forEach( item => {
+                item.checked = false;
+            });                 
             if(e.target.classList.contains('js-asc')) {                
                 sortData = data.sort(nameSortAsc);
             }
@@ -189,7 +192,6 @@ function showCategory(data) {
                 sortData = data.sort(nameSortOldFirst);
             }
             sortData = sortData == undefined ? data : sortData;
-            // categoryItems = document.querySelectorAll('.js-category-item');
             addBlock(sortData,category);
             pagination(categoryItemsClass);
         });        
@@ -201,7 +203,6 @@ function showCategory(data) {
         console.log('filter1',filter,url.get('filter'));
         let filterData;
         let input = document.querySelectorAll('.js-filter-input');
-        // categoryItems = document.querySelectorAll('.js-category-item');
         input.forEach(item => {
             if(item.id == url.get('filter')) {
                 item.checked = true;                  
@@ -225,7 +226,6 @@ function showCategory(data) {
                     return state;
                 });
                 filterData = filterData.length ? filterData : data;
-                // categoryItems = document.querySelectorAll('.js-category-item');
                 addBlock(filterData,category);
                 pagination(categoryItemsClass);               
             });      
@@ -242,7 +242,6 @@ function showCategory(data) {
         console.log('filterdata',filterData);
         filterData = filterData.length ? filterData : data;
         addBlock(filterData,category);
-        // categoryItems = document.querySelectorAll('.js-category-item');
         pagination(categoryItemsClass); 
         return filterData; 
     };
@@ -253,8 +252,6 @@ function showCategory(data) {
         let filterInput = document.querySelectorAll('.js-filter-input');
         let query;
         let filterData;
-        // categoryItems = document.querySelectorAll('.js-category-item');
-        console.log('filter',filter,data);
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             query = input.value;
@@ -267,7 +264,6 @@ function showCategory(data) {
                     return true;
                 }
             });
-            console.log('filterData44',filterData);
             addBlock(filterData,category);
             pagination(categoryItemsClass); 
         });  
@@ -276,7 +272,6 @@ function showCategory(data) {
     addFilter(data);
     filterSearch(filterHandler(data),data);
     sortData(data);
-    // categoryItems = document.querySelectorAll('.js-category-item');
     pagination(categoryItemsClass); 
 }
 
