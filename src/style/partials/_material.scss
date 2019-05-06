@@ -57,10 +57,14 @@
     &__video {
         width:100%;
         height:auto;
+        &-figure {
+            width:100%;
+        }
     }
     &__audio {
         width:100%;
         max-width:500px;
+        outline:none;
         &-figure {
             display:flex;
             flex-direction:column;

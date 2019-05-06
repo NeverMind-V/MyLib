@@ -62,9 +62,6 @@ function showAll(data) {
             fullArray.push(sameArray);
             sameArray = [];
             sameArray.push(item);
-            if( i == dataStorage.length - 1) {
-                fullArray.push(sameArray);
-            }
         }
         if( i == dataStorage.length - 1) {
             fullArray.push(sameArray);
@@ -316,7 +313,7 @@ function showPage(data) {
             case 'video':
                 container.innerHTML = `
                 <section class="material">
-                    <figure>
+                    <figure class="material__video-figure">
                         <video controls class="material__video">
                             <source src="${currentData.url}" type="audio/mp4">
                         </video>

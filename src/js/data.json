@@ -13,18 +13,18 @@
       "type": "video",
       "name": "Cyberpunk 2077 – official E3 2018 trailer",
       "url": "upload/Cyberpunk 2077 – official E3 2018 trailer.mp4",
-      "thumbnail": "",
+      "thumbnail": "upload/cyberpunk.jpg",
       "authorId": "2",
-      "description": "description 2"
+      "description": ""
     },
     {
       "id": "3",
       "type": "file-alt",
-      "name": "Lorem Title",
-      "url": "url 3",
-      "thumbnail": "upload/nature.jpg",
+      "name": "Новая Линия Кэйо",
+      "url": "",
+      "thumbnail": "upload/1200px-Shinsen-Shinjuku_Station_200506.jpg",
       "authorId": "3",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+      "description": "Новая Линия Кэйо (яп. 京王新線 кэйо синсэн) это ветка длинной 3,6 километра принадлежащая Keio Corporation, которая связывает станцию Сасадзука на линии Кэйо со станцией Синдзюку, с возможностью сквозного движения поездов далее по линии Синдзюку принадлежащей Toei Subway."
     },
     {
       "id": "4",
@@ -38,71 +38,71 @@
     {
       "id": "5",
       "type": "video",
-      "name": "name 5",
-      "url": "url 5",
+      "name": "21 pilots - Fairly Local",
+      "url": "upload/fairlylocal.mp4",
       "thumbnail": "",
       "authorId": "1",
-      "description": "description 5"
+      "description": ""
     },
     {
       "id": "6",
       "type": "video",
-      "name": "Aname 6",
-      "url": "url 6",
+      "name": "Queen - Bohemian Rapsody",
+      "url": "upload/bohemian rapsody.mp4",
       "thumbnail": "",
       "authorId": "1",
-      "description": "description 6"
+      "description": ""
     },
     {
       "id": "7",
       "type": "video",
-      "name": "name 7",
-      "url": "url 7",
+      "name": "21 pilots - Chlorine",
+      "url": "upload/chlorine.mp4",
       "thumbnail": "",
       "authorId": "5",
-      "description": "description 7"
+      "description": ""
     },
     {
       "id": "8",
       "type": "video",
-      "name": "name 8",
-      "url": "url 8",
+      "name": "Queen - Another one bites the dust",
+      "url": "upload/bitesthedust.mp4",
       "thumbnail": "",
       "authorId": "5",
-      "description": "description 8"
+      "description": ""
     },
     {
       "id": "9",
       "type": "file-alt",
-      "name": "Aname 9",
-      "url": "url 9",
-      "thumbnail": "",
+      "name": "Площадь Сон Санхёна",
+      "url": "",
+      "thumbnail": "upload/Song_Sang-hyeon.jpg",
       "authorId": "5",
-      "description": "description 9"
+      "description": "Площадь Сон Санхёна (кор. 송상현 광장; Сон Санхён кванджан) — центральная площадь города Пусана, самая большая площадь в Корее. Расположена в Пуджондоне района Пусанджин. Строительство площади началось в 2012 году; в октябре 2013 года территория стройки была расширена, в июне 2014 года строительство завершилось и площадь была официально открыта[1]. В апреле 2012 года был объявлен конкурс на выбор названия для площади. Из 569 присланных горожанами вариантов комиссия в ноябре 2012 года выбрала имя национального героя Сон Санхёна, героя Имджинской войны XVI века против японцев."
     },
     {
       "id": "10",
       "type": "file-alt",
-      "name": "name 10",
-      "url": "url 10",
-      "thumbnail": "",
+      "name": "В метро Китая появилось распознавание лиц",
+      "url": "",
+      "thumbnail": "upload/500px-201901_Noticeboard_at_Jinan_West_Railway_Station_(Metro).jpg",
       "authorId": "5",
-      "description": "description 10"
+      "description": "В метро города Цзинань провинции Шаньдун на востоке Китая успешно внедрили технологию распознавания лиц. Для входа вместо покупки билета или сканирования кода на смартфоне можно просто улыбнуться в экран, об этом 2 мая 2019 года сообщает «Жэньминь жибао».Системы распознавания лиц появились в апреле на 11 станциях 1-ой линии метро, их установят и на строящихся станциях 2-ой и 3-ей линий.За сбор фото отвечает мобильное приложение «Цзинаньский метрополитен» (англ. Jinan Metro), плата снимется с банковского счёта после регистрации и проверки аккаунта.Технология сократила очереди на входе, за минуту через турникет проходит от 30 человек вместо 20, пишет газета.Сканирование занимает 2 секунды, доля ошибок составляет всего одну на 1 миллион, система способна обнаруживать мошенническое использование фотографий, видео или масок."
     },
     {
       "id": "11",
       "type": "music",
-      "name": "name 11",
-      "url": "url 11",
+      "name": "ASKING ALEXANDRIA - Into The Fire",
+      "url": "upload/ASKING ALEXANDRIA - Into The Fire.mp3",
       "thumbnail": "",
       "authorId": "4",
-      "description": "description 11"
+      "description": ""
     },
     {
       "id": "12",
       "type": "video",
-      "name": "Cname 12",
-      "url": "url 12",
+      "name": "Sia - Unstoppable",
+      "url": "upload/unstoppable.mp4",
       "thumbnail": "",
       "authorId": "4",
       "description": "description 12"
@@ -110,44 +110,44 @@
     {
       "id": "13",
       "type": "music",
-      "name": "name 13",
-      "url": "url 13",
+      "name": "ASKING ALEXANDRIA - Alone In A Room",
+      "url": "upload/ASKING_ALEXANDRIA_-_Alone_In_A_Room.mp3",
       "thumbnail": "",
       "authorId": "3",
-      "description": "description 13"
+      "description": ""
     },
     {
       "id": "14",
       "type": "file-alt",
-      "name": "Cname 14",
-      "url": "url 14",
-      "thumbnail": "",
+      "name": "Китай финансирует умный город в Кении",
+      "url": "",
+      "thumbnail": "upload/500px-Software_Developer_at_work_03.jpg",
       "authorId": "3",
-      "description": "description 14"
+      "description": "Кения получает от Китая около 666 млн долларов на строительство центра обработки данных и автомагистраль в Найроби. Об этом 26 апреля 2019 года сообщает Reuters со ссылкой на администрацию кенийского президента.Финансирование 67,5 млрд кенийских шиллингов (666 млн долларов) обеспечивается льготными кредитами. Китайская телекоммуникационная компания Huawei создаст дата-центр в Конза (англ. Konza Technology City), строящемся технологическом городе в часе езды от Найроби. Проект оценивается в 17,5 млрд шиллингов, он предусматривает решения в области общественной безопасности, контроля дорожного движения и госуслуг.Ещё 50 млрд шиллингов пойдут на строительство автомагистрали, соединяющей аэропорт с пригородами. Её построит Китайская корпорация по строительству дорог и мостов.Президент Кении Ухуру Кениата, посетивший форум «Один пояс и один путь» в Пекине, положительно оценил сотрудничество с Китаем. Критики говорят о растущем долге Кении перед Китаем."
     },
     {
       "id": "15",
       "type": "file-alt",
-      "name": "Cname 15",
-      "url": "url 15",
-      "thumbnail": "",
+      "name": "Уникальный автограф Маяковского выставляют на торги",
+      "url": "",
+      "thumbnail": "upload/Vladimir_Mayakovsky_signature.svg.png",
       "authorId": "3",
-      "description": "description 15"
+      "description": "Автограф Владимира Маяковского с неопубликованным стихотворным экспромтом будет выставлен на торги 18 мая 2019 года. Стартовая цена составит 900 тыс. рублей.По словам главы «Литфонда», стартовая цена лота составит 900 тыс. рублей. При этом Бурмистров подчеркнул, что подобные автографы практически не встречаются, поэтому данный товар идёт «на вес золота».Дарственная надпись адресована Якову Сауловичу Агранову, сотруднику ВЧК с 1919 года, комиссару государственной безопасности 1-го ранга (1935), преемнику Генриха Ягоды на посту начальника Главного управления государственной безопасности НКВД СССР. Агранов считается одним из организаторов массовых репрессий 1920—1930-х годов."
     },
     {
       "id": "16",
       "type": "music",
-      "name": "name 16",
-      "url": "url 16",
+      "name": "Sum_41_-_Some_say",
+      "url": "upload/Sum_41_-_Some_say.mp3",
       "thumbnail": "",
       "authorId": "3",
-      "description": "description 16"
+      "description": ""
     },
     {
       "id": "17",
       "type": "video",
-      "name": "name 17",
-      "url": "url 17",
+      "name": "Into the Nature",
+      "url": "upload/Into The Nature.mp4",
       "thumbnail": "",
       "authorId": "1",
       "description": "description 17"
@@ -155,62 +155,62 @@
     {
       "id": "18",
       "type": "music",
-      "name": "zname 18",
-      "url": "url 18",
+      "name": "Sum_41_-_Still_Waiting",
+      "url": "upload/Sum_41_-_Still_Waiting.mp3",
       "thumbnail": "",
       "authorId": "2",
-      "description": "description 18"
+      "description": ""
     },
     {
       "id": "19",
       "type": "file-alt",
-      "name": "Zname 19",
-      "url": "url 19",
-      "thumbnail": "",
+      "name": "Император Японии Акихито завершил отречение от престола",
+      "url": "",
+      "thumbnail": "upload/300px-Akihito_090710-1600b.jpg",
       "authorId": "1",
-      "description": "description 19"
+      "description": "Император Японии Акихито отрёкся от престола.Сегодня он завершил серию ритуалов, связанных с отречением престола. Облаченный в одежды, дозволенные только монарху, посетил в императорском дворе святилище богини Аматэрасу — прародительници правящей династии в Японии. В святилище бывший император «известил» богиню о своём уходе с поста императора и перехода титула его сыну Нарухито."
     },
     {
       "id": "20",
       "type": "file-alt",
-      "name": "zname 20",
-      "url": "url 20",
-      "thumbnail": "",
+      "name": "Станислав Козловский рассказал, зачем Викимедиа РУ собирает деньги",
+      "url": "",
+      "thumbnail": "upload/220px-Wikimedia_Conference_2013_portrait_101.JPG",
       "authorId": "1",
-      "description": "description 20"
+      "description": "18 января 2019 года Станислав Козловский, выступая в телевизионном интервью «Литклуб.TV», рассказал, зачем партнёрство «Викимедиа РУ» собирает пожертвования. По его словам, в России «Викимедиа РУ» тратит собранные деньги на поддержку вики-проектов.Партнёрство тратит деньги на ежегодную конференцию, где участники Википедии встречаются друг с другом и обсуждают проблемы. Во время этих конференций участники Википедии, которые в течение года сделали больше остальных, получают Вики-премию в виде статуэтки. Те, кто делает что-то полезное, не будучи участниками вики-проектов, получают премию «Свободные знания». Это не денежные, а статусные призы.Большая работа идёт для организации конкурсов. Во время таких конкурсах люди пишут в Википедию статьи по определённой тематике. Например, в феврале и марте проходит конкурс статей о женщинах, потому что в Википедии сейчас в пять раз больше статей о мужчинах, чем статей о женщинах.Деньги нужны партнёрству, чтобы заключать договора с владельцами авторских прав. Например, РИА «Новости» передало НП «Викимедиа РУ» права на свободное использование части своего фотоархива, в котором собрано множество ценных фотографий по истории России. Другая организация передала права на использование энциклопедии «Вся Россия», и теперь оттуда можно брать иллюстрации и тексты. Часть денег идёт на зарплату, однако она небольшая. Зарплата появилась, потому что члены партнёрства вынуждены тратить на эту работу заметную часть рабочего времени."
     },
     {
       "id": "21",
       "type": "music",
-      "name": "Fname 21",
-      "url": "url 21",
+      "name": "Sum_41_-_War",
+      "url": "upload/Sum_41_-_War.mp3",
       "thumbnail": "",
       "authorId": "2",
-      "description": "description 21"
+      "description": ""
     },
     {
       "id": "22",
       "type": "music",
-      "name": "Fname 22",
-      "url": "url 22",
+      "name": "THE_HARDKISS_-_Rain",
+      "url": "upload/THE_HARDKISS_-_Rain.mp3",
       "thumbnail": "",
       "authorId": "1",
-      "description": "description 22"
+      "description": ""
     },
     {
       "id": "23",
       "type": "video",
-      "name": "name 17",
-      "url": "url 17",
+      "name": "Asking Alexandria - I won't give in",
+      "url": "upload/askingalexandria.mp4",
       "thumbnail": "",
       "authorId": "4",
-      "description": "description 17"
+      "description": ""
     },
     {
       "id": "24",
       "type": "music",
-      "name": "zname 18",
-      "url": "url 18",
+      "name": "twenty_one_pilots_-_Stressed_Out",
+      "url": "upload/twenty_one_pilots_-_Stressed_Out.mp3",
       "thumbnail": "",
       "authorId": "4",
       "description": "description 18"
@@ -218,37 +218,37 @@
     {
       "id": "25",
       "type": "file-alt",
-      "name": "Zname 19",
-      "url": "url 19",
-      "thumbnail": "",
+      "name": "Шэньчжэнь установит 7000 станций 5G",
+      "url": "",
+      "thumbnail": "upload/500px-Huawei_Headquarter,_Bantian,_Shenzhen_-_panoramio.jpg",
       "authorId": "5",
-      "description": "description 19"
+      "description": "Китайский город Шэньчжэнь установит в этом году около 7000 базовых станций 5G. Об этом сообщает «Синьхуа» со ссылкой на городское бюро промышленности и информационных технологий.Ранее оператор связи Китая China Unicom установил в городе 111 базовых станций 5G. В январе базовая станция 5G появилась в международном аэропорту Гуанчжоу Байюнь провинции Гуандун на юге Китая."
     },
     {
       "id": "26",
       "type": "file-alt",
-      "name": "zname 20",
-      "url": "url 20",
-      "thumbnail": "",
+      "name": "Беспроводной утюг — очередная новинка Xiaomi",
+      "url": "",
+      "thumbnail": "upload/300px-Утюг.jpg",
       "authorId": "1",
-      "description": "description 20"
+      "description": "Китайская компания Xiaomi представила беспроводной утюг Xiaomi Mi Cordless Steam Iron со встроенным отпаривателем. Он укомплектован подставкой для зарядки, которую можно отсоединить нажатием на кнопку разблокировки: специальный механизм препятствует падению утюга. Утюг развивает максимальную мощность 2000 Вт, поддерживает несколько режимов работы и нагревается до максимальной температуры за 2 минуты. Резервуар для воды объёмом 280 мл предназначен для глажки вещей с использованием пара. Подошва утюга имеет специальное покрытие, которое позволяет минимизировать повреждения одежды при высоких температурах.  Xiaomi Mi Cordless Steam Iron будет стоить 199 юаней (около 30 долларов или 1950 рублей). Он поступит в продажу в ближайшее время."
     },
     {
       "id": "27",
       "type": "music",
-      "name": "Fname 21",
-      "url": "url 21",
+      "name": "Imagine_Dragons_-_Thunder",
+      "url": "upload/Imagine_Dragons_-_Thunder.mp3",
       "thumbnail": "",
       "authorId": "1",
-      "description": "description 21"
+      "description": ""
     },
     {
       "id": "28",
       "type": "music",
-      "name": "Fname 22",
-      "url": "url 22",
+      "name": "THE_HARDKISS_-_Rain1",
+      "url": "upload/THE_HARDKISS_-_Rain.mp3",
       "thumbnail": "",
       "authorId": "3",
-      "description": "description 22"
+      "description": ""
     }
   ]

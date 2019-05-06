@@ -29,14 +29,23 @@
         color:$blue;
     }
     &__thumb {
-        max-width: 100%;
-        height:auto;
         display:block;
+        max-width:100%;
+        height:auto;
+        transform:scale(1);
+        transition:$main_animation;
+        &-wrapper {
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            width:100%;
+            height: 250px;
+            overflow:hidden;
+        }
     }
     &__filter {
         width:100%;
-        max-width:300px;
-        min-width: 230px;
+        max-width:230px;
         padding:20px 10px 50px;
         border:1px solid $border;
         background:rgba($blue,0.05);
@@ -91,6 +100,7 @@
     &__main {
         display:flex;
         flex-wrap: wrap;
+        align-items:flex-start;
         margin:0 -10px;
         &-wrapper {
             display:flex;
@@ -107,15 +117,30 @@
         align-items:center; 
         width:calc(33.33% - 20px);
         margin:0 10px 20px;
-        padding:10px 10px 15px;
         background:$white;
         opacity:0;
         transform:scale(0);
         border:1px solid $border; 
         animation:zoomIn 0.3s ease-in-out forwards;
         transition:$main_animation;
+        &-block {
+            height:55px;
+            width:100%;
+            padding:5px;
+            @include font-size(16px);
+            color:$blue;
+            text-align:center;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            transition:$main_animation;            
+        }
         &:hover {
-            box-shadow: 0px 1px 18px 2px rgba($black, 0.05); 
+            background:rgba($border,0.1);
+            box-shadow: 0px 1px 18px 2px rgba($black, 0.05);
+            .category__thumb {
+                transform:scale(0.8);
+            } 
         }
         @for $i from 1 through 6 {
             &:nth-child(6n + #{$i}) {

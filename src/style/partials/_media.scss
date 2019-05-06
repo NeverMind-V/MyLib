@@ -5,6 +5,12 @@
         }
     }
 }
+@media screen and (min-width:769px) and (max-width: 1024px) {
+    .category__thumb-wrapper {        
+        height:120px;
+    }
+    
+}
 @media screen and (max-width: 768px) {
     .menu {
         &__btn {

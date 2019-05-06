@@ -9,7 +9,7 @@ function pagination(className) {
             item.style.display = 'none';
         });
         for(let i = 0; i < blockAmount; i++) {
-            if( i + (page - 1) * blockAmount < items.length) items[i + (page - 1) * blockAmount].style.display = 'flex';
+            if( i + (page - 1) * blockAmount < items.length) items[i + (page - 1) * blockAmount].style.display = 'block';
         }
     }      
     let prev = `
