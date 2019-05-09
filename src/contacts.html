@@ -38,18 +38,18 @@
                     </div>
                     <div class="contacts__block">
                         <h3 class="contacts__header">Форма связи</h3>                                                    
-                        <form action="" id="feedback-form" class="contacts__form">                            
+                        <form action="#" id="feedback-form" class="contacts__form">                            
                             <label for="feedback-name" class="contacts__label--required">Имя</label>
-                            <input type="text" id="feedback-name" name="userName" placeholder="John Doe" class="contacts__input js-contact-input" pattern=".{3,}" required>
+                            <input type="text" id="feedback-name" name="userName" placeholder="John Doe" class="contacts__input js-contact-input js-required" pattern=".{3,}" >
                             <p class="contacts__alert js-form-alert"></p>
                             <label for="feedback-email" class="contacts__label--required">Email</label>
-                            <input type="text" id="feedback-email" name="userEmail" placeholder="test@mail.com" class="contacts__input js-contact-input" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+                            <input type="text" id="feedback-email" name="userEmail" placeholder="test@mail.com" class="contacts__input js-contact-input js-required" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" >
                             <p class="contacts__alert js-form-alert"></p>
                             <label for="feedback-phone" class="contacts__label">Телефон</label>
                             <input type="text" id="feedback-phone" name="userPhone" class="contacts__input js-contact-input" >
                             <p class="contacts__alert js-form-alert"></p>
                             <label for="feedback-message" class="contacts__label--required">Ваше сообщение</label>
-                            <textarea name="userMessage" id="feedback-message" class="contacts__textarea js-contact-input" pattern=".{10,}" required></textarea>
+                            <textarea name="userMessage" id="feedback-message" class="contacts__textarea js-contact-input js-required" pattern=".{10,}"></textarea>
                             <p class="contacts__alert js-form-alert"></p>
                             <input type="submit" class="contacts__submit js-contact-submit" value="Отправить">
                         </form>                                               

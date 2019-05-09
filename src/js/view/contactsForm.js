@@ -1,6 +1,6 @@
 function contactMenuHandler() {
   const form = document.getElementById('feedback-form');
-  const input = document.querySelectorAll('.js-contact-input[required]');
+  const input = document.querySelectorAll('.js-contact-input.js-required');
   const error = {
     userName: {
       message: 'Имя должно быть больше двух символов.',
