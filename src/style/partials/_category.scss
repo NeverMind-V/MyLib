@@ -193,6 +193,15 @@
             @extend %input;
         }
     }
+    &__textarea {
+        @extend %input;
+        display:block;
+        width:100%;
+        min-height:100px;
+        padding:10px;
+        margin-bottom:15px;
+        resize:vertical;
+    }
     &__alert {
         @extend %alert;
         &.active {            
