@@ -4,7 +4,6 @@ function showPage(data) {
     const params = new URLSearchParams(window.location.search);
     let currentData = data.filter(item => item.id === params.get('id'));
     [currentData] = currentData;
-    console.log(currentData);
     switch (currentData.type) {
       case 'file-alt':
         container.innerHTML = `

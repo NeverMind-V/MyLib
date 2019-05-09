@@ -12,7 +12,6 @@ function showAll(data) {
   };
   let sameArray = [];
   const fullArray = [];
-
   const dataStorage = [...data];
 
   dataStorage.sort(nameSort).forEach((item, i) => {
@@ -35,7 +34,6 @@ function showAll(data) {
     const header = document.createElement('h3');
     header.className = 'main__header--underlined';
     [header.innerHTML] = item[0].name;
-    console.log(header.innerHTML);
     const linkBlock = document.createElement('div');
     linkBlock.className = 'main__letter-inner';
     block.appendChild(header);

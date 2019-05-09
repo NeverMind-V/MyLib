@@ -35,7 +35,6 @@ function addMaterial(input, chosen) {
   newData.push(obj);
   localStorage.removeItem('data');
   localStorage.setItem('data', JSON.stringify(newData));
-  console.log(localStorage.getItem('data'));
 }
 
 function addCategoryItem() {
